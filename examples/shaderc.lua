@@ -104,9 +104,15 @@ local function commandline(cfg)
     return commands
 end
 
+local m = {}
+
 local function compile(fullpath)
     local _, stage, name = fullpath:match "^(.*)/([cfv]s)_([^/]+)%.sc$"
     local target_name = ("shader-%s_%s"):format(stage, name)
+    if m[target_name] then
+        return target_name
+    end
+    m[target_name] = true
     lm:build (target_name) {
         "$bin/shaderc",
         commandline {

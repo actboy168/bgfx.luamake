@@ -26,10 +26,10 @@ local m = {}
 local function compile(fullpath)
     local name = fullpath:match "/([^/]+)%.obj$"
     local target_name = ("mesh-%s"):format(name)
-    if m[name] then
+    if m[target_name] then
         return target_name
     end
-    m[name] = true
+    m[target_name] = true
     local args = assert(geometryc_args[name], "unknown mesh: "..name)
     lm:build (target_name) {
         "$bin/geometryc",
