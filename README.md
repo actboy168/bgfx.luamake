@@ -2,6 +2,8 @@
 
 Build [bgfx](https://github.com/bkaradzic/bgfx) with [luamake](https://github.com/actboy168/luamake).
 
+### Use
+
 Build all
 > luamake
 
@@ -11,6 +13,7 @@ Run example
 Or
 > luamake -runtest 00-helloworld
 
-##TODO
+
+### TODO
 
 * Compile shader support to automatically generate dependencies using `--depends`.
