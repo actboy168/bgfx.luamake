@@ -8,10 +8,10 @@ Build all
 > luamake
 
 Run example
-> luamake -runtest 00
+> luamake -run 00
 
 Or
-> luamake -runtest 00-helloworld
+> luamake -run 00-helloworld
 
 
 ### TODO

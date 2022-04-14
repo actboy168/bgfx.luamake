@@ -78,8 +78,8 @@ for file in fs.pairs "examples" do
     end
 end
 
-if lm.runtest then
-    local test = lm.runtest
+if lm.run then
+    local test = lm.run
     if test == "on" then
         test = "00"
     end
@@ -87,7 +87,7 @@ if lm.runtest then
 
     require("examples."..test)
     lm:build ("run-"..test) {
-        "$luamake", "lua", "runtest.lua", "$bin/"..test, "$bin",
+        "$luamake", "lua", "run.lua", "$bin/"..test, "$bin",
         deps = test,
     }
     lm:default {
