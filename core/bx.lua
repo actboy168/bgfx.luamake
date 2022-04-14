@@ -15,5 +15,17 @@ lm:source_set "bx" {
     },
     gcc = {
         flags = "-Wno-maybe-uninitialized"
+    },
+    linux = {
+        ldflags = "-pthread",
+        links = {
+            "m",
+            "dl"
+        }
+    },
+    macos = {
+        frameworks = {
+            "Cocoa"
+        }
     }
 }

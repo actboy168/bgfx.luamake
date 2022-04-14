@@ -10,14 +10,6 @@ if not pcall(require, "env") then
     lm.BimgDir = lm:path "./bimg/"
 end
 
-if lm.generator then
-    lm:build "generator" {
-        "$luamake", "lua", "examples/generator.lua", lm.BgfxDir,
-    }
-    lm:default { "generator" }
-    return
-end
-
 lm.cxx = "c++17"
 
 lm.warnings = {
@@ -66,6 +58,10 @@ end
 
 require "examples.common"
 
+lm:build "generator" {
+    "$luamake", "lua", "examples/generator.lua", lm.BgfxDir,
+}
+
 local examples = {}
 for file in fs.pairs "examples" do
     local name = file:stem():string()
@@ -89,7 +85,10 @@ if lm.run then
     }
     lm:default { "run-"..test }
 else
+    local targets = {}
     for _, test in pairs(examples) do
         require("examples."..test)
+        targets[#targets+1] = test
     end
+    lm:default(targets)
 end

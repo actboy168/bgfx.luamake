@@ -44,7 +44,7 @@ local shader_options <const> = {
     vulkan = {
         vs = "spirv",
         fs = "spirv",
-        cs = "spriv",
+        cs = "spirv",
     },
 }
 

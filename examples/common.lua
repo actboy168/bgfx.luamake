@@ -23,6 +23,13 @@ lm:lib "example-common" {
             "examples/common/**/*.mm"
         }
     },
+    gcc = {
+        flags = {
+            "-Wno-comment",
+            "-Wno-unused-but-set-variable",
+            "-Wno-sign-compare"
+        }
+    },
     clang = {
         flags = {
             "-Wno-comment",
@@ -47,9 +54,13 @@ lm:source_set "example-runtime" {
             "comdlg32"
         }
     },
+    linux = {
+        links = {
+            "X11"
+        }
+    },
     macos = {
         frameworks = {
-            "Cocoa",
             "IOKit",
             "Metal",
             "QuartzCore",

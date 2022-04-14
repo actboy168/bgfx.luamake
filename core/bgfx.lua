@@ -42,6 +42,11 @@ local bgfxLib = {
     windows = {
         includes = "3rdparty/dxsdk/include",
     },
+    linux = {
+        defines = {
+            "BGFX_CONFIG_RENDERER_VULKAN=1",
+        },
+    },
     macos = {
         sources = {
             "src/*.mm",

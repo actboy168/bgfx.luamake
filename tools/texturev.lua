@@ -37,7 +37,6 @@ lm:exe "texturev" {
     },
     macos = {
         frameworks = {
-            "Cocoa",
             "Metal",
             "QuartzCore",
             "OpenGL"

@@ -44,6 +44,9 @@ lm:source_set "glslang" {
     windows = {
         sources = "!glslang/OSDependent/Unix/*.cpp",
     },
+    linux = {
+        sources = "!glslang/OSDependent/Windows/*.cpp",
+    },
     macos = {
         sources = "!glslang/OSDependent/Windows/*.cpp",
     },
@@ -180,11 +183,6 @@ lm:exe "shaderc" {
     msvc = {
         flags = {
             "/wd4819",
-        }
-    },
-    macos = {
-        frameworks = {
-            "Cocoa"
         }
     }
 }

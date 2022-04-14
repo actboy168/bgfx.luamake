@@ -24,10 +24,5 @@ lm:exe "texturec" {
         links = {
             "psapi"
         }
-    },
-    macos = {
-        frameworks = {
-            "Cocoa"
-        }
     }
 }
