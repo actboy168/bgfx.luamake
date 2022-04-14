@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '36-sky' {
     rootdir = lm.BgfxDir / 'examples/36-sky',
@@ -12,6 +13,7 @@ lm:exe '36-sky' {
         shaderc.compile 'examples/36-sky/vs_sky.sc',
         shaderc.compile 'examples/36-sky/vs_sky_landscape.sc',
         geometryc.compile 'examples/assets/meshes/test_scene.obj',
+        texturec.compile 'examples/runtime/textures/lightmap.ktx',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

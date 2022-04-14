@@ -29,7 +29,7 @@ local function compile(fullpath)
         return target_name
     end
     m[name] = true
-    local args = assert(geometryc_args[name])
+    local args = assert(geometryc_args[name], "unknown mesh: "..name)
     lm:build (target_name) {
         "$bin/geometryc",
         "-f", "$in","-o", "$out",

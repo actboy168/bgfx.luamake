@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '09-hdr' {
     rootdir = lm.BgfxDir / 'examples/09-hdr',
@@ -21,6 +22,7 @@ lm:exe '09-hdr' {
         shaderc.compile 'examples/09-hdr/vs_hdr_skybox.sc',
         shaderc.compile 'examples/09-hdr/vs_hdr_tonemap.sc',
         geometryc.compile 'examples/assets/meshes/bunny.obj',
+        texturec.compile 'examples/runtime/textures/uffizi.ktx',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

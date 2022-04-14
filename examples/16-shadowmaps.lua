@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '16-shadowmaps' {
     rootdir = lm.BgfxDir / 'examples/16-shadowmaps',
@@ -63,6 +64,9 @@ lm:exe '16-shadowmaps' {
         geometryc.compile 'examples/assets/meshes/cube.obj',
         geometryc.compile 'examples/assets/meshes/hollowcube.obj',
         geometryc.compile 'examples/assets/meshes/tree.obj',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
+        texturec.compile 'examples/runtime/textures/figure-rgba.dds',
+        texturec.compile 'examples/runtime/textures/flare.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

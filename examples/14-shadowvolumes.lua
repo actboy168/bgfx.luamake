@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '14-shadowvolumes' {
     rootdir = lm.BgfxDir / 'examples/14-shadowvolumes',
@@ -34,6 +35,9 @@ lm:exe '14-shadowvolumes' {
         geometryc.compile 'examples/assets/meshes/column.obj',
         geometryc.compile 'examples/assets/meshes/cube.obj',
         geometryc.compile 'examples/assets/meshes/platform.obj',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
+        texturec.compile 'examples/runtime/textures/figure-rgba.dds',
+        texturec.compile 'examples/runtime/textures/flare.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

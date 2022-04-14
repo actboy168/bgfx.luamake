@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '45-bokeh' {
     rootdir = lm.BgfxDir / 'examples/45-bokeh',
@@ -20,6 +21,8 @@ lm:exe '45-bokeh' {
         shaderc.compile 'examples/45-bokeh/vs_bokeh_screenquad.sc',
         geometryc.compile 'examples/assets/meshes/cube.obj',
         geometryc.compile 'examples/assets/meshes/hollowcube.obj',
+        texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

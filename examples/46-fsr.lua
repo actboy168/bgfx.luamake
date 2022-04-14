@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '46-fsr' {
     rootdir = lm.BgfxDir / 'examples/46-fsr',
@@ -19,6 +20,8 @@ lm:exe '46-fsr' {
         shaderc.compile 'examples/46-fsr/vs_fsr_screenquad.sc',
         geometryc.compile 'examples/assets/meshes/cube.obj',
         geometryc.compile 'examples/assets/meshes/hollowcube.obj',
+        texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

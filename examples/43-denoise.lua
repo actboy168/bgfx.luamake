@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '43-denoise' {
     rootdir = lm.BgfxDir / 'examples/43-denoise',
@@ -21,6 +22,8 @@ lm:exe '43-denoise' {
         geometryc.compile 'examples/assets/meshes/cube.obj',
         geometryc.compile 'examples/assets/meshes/hollowcube.obj',
         geometryc.compile 'examples/assets/meshes/tree.obj',
+        texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

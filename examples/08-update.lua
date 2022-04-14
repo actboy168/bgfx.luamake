@@ -1,5 +1,6 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
+local texturec = require 'examples.texturec'
 
 lm:exe '08-update' {
     rootdir = lm.BgfxDir / 'examples/08-update',
@@ -10,6 +11,30 @@ lm:exe '08-update' {
         shaderc.compile 'examples/08-update/fs_update_3d.sc',
         shaderc.compile 'examples/08-update/fs_update_cmp.sc',
         shaderc.compile 'examples/08-update/vs_update.sc',
+        texturec.compile 'examples/runtime/textures/texture_compression_atc.dds',
+        texturec.compile 'examples/runtime/textures/texture_compression_atc.dds',
+        texturec.compile 'examples/runtime/textures/texture_compression_atce.dds',
+        texturec.compile 'examples/runtime/textures/texture_compression_atce.dds',
+        texturec.compile 'examples/runtime/textures/texture_compression_atci.dds',
+        texturec.compile 'examples/runtime/textures/texture_compression_atci.dds',
+        texturec.compile 'examples/runtime/textures/texture_compression_bc1.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_bc1.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_bc2.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_bc2.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_bc3.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_bc3.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_etc1.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_etc1.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_etc2.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_etc2.ktx',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc12.pvr',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc12.pvr',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc14.pvr',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc14.pvr',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc22.pvr',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc22.pvr',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc24.pvr',
+        texturec.compile 'examples/runtime/textures/texture_compression_ptc24.pvr',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

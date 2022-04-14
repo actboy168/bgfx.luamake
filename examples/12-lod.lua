@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '12-lod' {
     rootdir = lm.BgfxDir / 'examples/12-lod',
@@ -14,6 +15,8 @@ lm:exe '12-lod' {
         geometryc.compile 'examples/assets/meshes/tree1b_lod1_2.obj',
         geometryc.compile 'examples/assets/meshes/tree1b_lod2_1.obj',
         geometryc.compile 'examples/assets/meshes/tree1b_lod2_2.obj',
+        texturec.compile 'examples/runtime/textures/bark1.dds',
+        texturec.compile 'examples/runtime/textures/leafs1.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

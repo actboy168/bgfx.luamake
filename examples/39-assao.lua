@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '39-assao' {
     rootdir = lm.BgfxDir / 'examples/39-assao',
@@ -37,6 +38,7 @@ lm:exe '39-assao' {
         geometryc.compile 'examples/assets/meshes/hollowcube.obj',
         geometryc.compile 'examples/assets/meshes/orb.obj',
         geometryc.compile 'examples/assets/meshes/tree.obj',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

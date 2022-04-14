@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local texturec = require 'examples.texturec'
 
 lm:exe '13-stencil' {
     rootdir = lm.BgfxDir / 'examples/13-stencil',
@@ -18,6 +19,9 @@ lm:exe '13-stencil' {
         shaderc.compile 'examples/13-stencil/vs_stencil_texture_lighting.sc',
         geometryc.compile 'examples/assets/meshes/bunny.obj',
         geometryc.compile 'examples/assets/meshes/column.obj',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
+        texturec.compile 'examples/runtime/textures/figure-rgba.dds',
+        texturec.compile 'examples/runtime/textures/flare.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

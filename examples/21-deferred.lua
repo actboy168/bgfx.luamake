@@ -1,5 +1,6 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
+local texturec = require 'examples.texturec'
 
 lm:exe '21-deferred' {
     rootdir = lm.BgfxDir / 'examples/21-deferred',
@@ -20,6 +21,8 @@ lm:exe '21-deferred' {
         shaderc.compile 'examples/21-deferred/vs_deferred_debug_line.sc',
         shaderc.compile 'examples/21-deferred/vs_deferred_geom.sc',
         shaderc.compile 'examples/21-deferred/vs_deferred_light.sc',
+        texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
+        texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

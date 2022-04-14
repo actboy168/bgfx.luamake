@@ -18,6 +18,8 @@ local function generator(name)
     local cpp_sources = {}
     local shaders = {}
     local meshes = {}
+    local textures = {}
+
     for file in fs.pairs(projectdir) do
         local filename = file:filename():string()
         local ext = file:extension():string():lower()
@@ -38,11 +40,16 @@ local function generator(name)
 
     for _, filename in ipairs(cpp_sources) do
         local content = readall(projectdir.."/"..filename)
-        content:gsub('"meshes/([^.]*)%.bin"', function (mesh)
-            meshes[#meshes+1] = mesh
-        end)
+        content
+            :gsub('"meshes/([^/]*)%.bin"', function (mesh)
+                meshes[#meshes+1] = mesh
+            end)
+            :gsub('"textures/([^/]*%.%w+)"', function (texture)
+                textures[#textures+1] = texture
+            end)
     end
     table.sort(meshes)
+    table.sort(textures)
 
     write "local lm = require 'luamake'"
     if #shaders > 0 then
@@ -50,6 +57,9 @@ local function generator(name)
     end
     if #meshes > 0 then
         write "local geometryc = require 'examples.geometryc'"
+    end
+    if #textures > 0 then
+        write "local texturec = require 'examples.texturec'"
     end
     write ""
     write "lm:exe '${NAME}' {"
@@ -61,6 +71,9 @@ local function generator(name)
     end
     for _, mesh in ipairs(meshes) do
         write(("        geometryc.compile 'examples/assets/meshes/%s.obj',"):format(mesh))
+    end
+    for _, texture in ipairs(textures) do
+        write(("        texturec.compile 'examples/runtime/textures/%s',"):format(texture))
     end
     write "    },"
     write "    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',"
