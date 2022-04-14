@@ -1,5 +1,7 @@
 local lm = require "luamake"
 
+require "utf8.support-utf8"
+
 lm:exe "texturec" {
     rootdir = lm.BimgDir,
     deps = {

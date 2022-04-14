@@ -1,5 +1,7 @@
 local lm = require "luamake"
 
+require "utf8.support-utf8"
+
 lm:source_set "fcpp" {
     rootdir = lm.BgfxDir / "3rdparty/fcpp",
     defines = {

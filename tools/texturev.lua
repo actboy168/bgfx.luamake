@@ -1,6 +1,7 @@
 local lm = require "luamake"
 
 require "examples.common"
+require "utf8.support-utf8"
 
 lm:exe "texturev" {
     rootdir = lm.BgfxDir,

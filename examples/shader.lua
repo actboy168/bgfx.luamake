@@ -1,6 +1,8 @@
 local lm = require "luamake"
 local fs = require "bee.filesystem"
 
+require "tools.shaderc"
+
 local platforms <const> = {
     windows = "windows",
     ios = "ios",

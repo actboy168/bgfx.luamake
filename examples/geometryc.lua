@@ -1,5 +1,7 @@
 local lm = require "luamake"
 
+require "tools.geometryc"
+
 local function compile(cfg)
     local name = cfg.name
     local target_name = ("mesh-%s"):format(name)

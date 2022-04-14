@@ -56,17 +56,6 @@ if lm.os == "ios" then
     return
 end
 
-if lm.os == "windows" then
-    lm:source_set "bgfx-support-utf8" {
-        sources = "utf8/utf8.rc"
-    }
-end
-
-require "tools.shaderc"
-require "tools.texturec"
-require "tools.texturev"
-require "tools.geometryc"
-
 require "examples.common"
 
 local examples = {}
