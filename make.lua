@@ -87,7 +87,7 @@ if lm.run then
 
     require("examples."..test)
     lm:build ("run-"..test) {
-        "$luamake", "lua", "run.lua", "$bin/"..test, "$bin",
+        "$luamake", "lua", "run.lua", "$bin/"..test,
         deps = test,
     }
     lm:default {
