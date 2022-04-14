@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
-lm:exe '00-helloworld' {
-    rootdir = lm.BgfxDir / 'examples/00-helloworld',
+lm:exe '26-occlusion' {
+    rootdir = lm.BgfxDir / 'examples/26-occlusion',
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '00-helloworld' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'helloworld.cpp',
+        'occlusion.cpp',
     },
 }

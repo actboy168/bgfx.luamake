@@ -1,9 +1,13 @@
 local lm = require 'luamake'
+local shaderc = require 'examples.shaderc'
 
-lm:exe '00-helloworld' {
-    rootdir = lm.BgfxDir / 'examples/00-helloworld',
+lm:exe '06-bump' {
+    rootdir = lm.BgfxDir / 'examples/06-bump',
     deps = {
         'example-runtime',
+        shaderc.compile 'examples/06-bump/fs_bump.sc',
+        shaderc.compile 'examples/06-bump/vs_bump.sc',
+        shaderc.compile 'examples/06-bump/vs_bump_instanced.sc',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
@@ -14,6 +18,6 @@ lm:exe '00-helloworld' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'helloworld.cpp',
+        'bump.cpp',
     },
 }

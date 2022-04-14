@@ -1,9 +1,12 @@
 local lm = require 'luamake'
+local shaderc = require 'examples.shaderc'
 
-lm:exe '00-helloworld' {
-    rootdir = lm.BgfxDir / 'examples/00-helloworld',
+lm:exe '17-drawstress' {
+    rootdir = lm.BgfxDir / 'examples/17-drawstress',
     deps = {
         'example-runtime',
+        shaderc.compile 'examples/17-drawstress/fs_drawstress.sc',
+        shaderc.compile 'examples/17-drawstress/vs_drawstress.sc',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
@@ -14,6 +17,6 @@ lm:exe '00-helloworld' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'helloworld.cpp',
+        'drawstress.cpp',
     },
 }

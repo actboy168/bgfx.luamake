@@ -10,6 +10,14 @@ if not pcall(require, "env") then
     lm.BimgDir = lm:path "./bimg/"
 end
 
+if lm.generator then
+    lm:build "generator" {
+        "$luamake", "lua", "examples/generator.lua", lm.BgfxDir,
+    }
+    lm:default { "generator" }
+    return
+end
+
 lm.cxx = "c++17"
 
 lm.warnings = {
@@ -79,9 +87,7 @@ if lm.run then
         "$luamake", "lua", "run.lua", "$bin/"..test,
         deps = test,
     }
-    lm:default {
-        "run-"..test
-    }
+    lm:default { "run-"..test }
 else
     for _, test in pairs(examples) do
         require("examples."..test)

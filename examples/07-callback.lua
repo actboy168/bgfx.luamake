@@ -1,9 +1,12 @@
 local lm = require 'luamake'
+local shaderc = require 'examples.shaderc'
 
-lm:exe '00-helloworld' {
-    rootdir = lm.BgfxDir / 'examples/00-helloworld',
+lm:exe '07-callback' {
+    rootdir = lm.BgfxDir / 'examples/07-callback',
     deps = {
         'example-runtime',
+        shaderc.compile 'examples/07-callback/fs_callback.sc',
+        shaderc.compile 'examples/07-callback/vs_callback.sc',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
@@ -14,6 +17,6 @@ lm:exe '00-helloworld' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'helloworld.cpp',
+        'callback.cpp',
     },
 }

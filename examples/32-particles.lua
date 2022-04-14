@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
-lm:exe '00-helloworld' {
-    rootdir = lm.BgfxDir / 'examples/00-helloworld',
+lm:exe '32-particles' {
+    rootdir = lm.BgfxDir / 'examples/32-particles',
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '00-helloworld' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'helloworld.cpp',
+        'particles.cpp',
     },
 }

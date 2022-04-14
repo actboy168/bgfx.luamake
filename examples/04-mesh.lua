@@ -2,13 +2,13 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 
-lm:exe '42-bunnylod' {
-    rootdir = lm.BgfxDir / 'examples/42-bunnylod',
+lm:exe '04-mesh' {
+    rootdir = lm.BgfxDir / 'examples/04-mesh',
     deps = {
         'example-runtime',
-        shaderc.compile 'examples/42-bunnylod/fs_bunnylod.sc',
-        shaderc.compile 'examples/42-bunnylod/vs_bunnylod.sc',
-        geometryc.compile 'examples/assets/meshes/bunny_patched.obj',
+        shaderc.compile 'examples/04-mesh/fs_mesh.sc',
+        shaderc.compile 'examples/04-mesh/vs_mesh.sc',
+        geometryc.compile 'examples/assets/meshes/bunny.obj',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
@@ -19,7 +19,6 @@ lm:exe '42-bunnylod' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'progmesh.c',
-        'bunnylod.cpp',
+        'mesh.cpp',
     },
 }
