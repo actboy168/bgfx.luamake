@@ -44,7 +44,11 @@ local function generator(name)
         local content = readall(projectdir.."/"..filename)
         content:gsub('"(%w+)/([^/]+%.%w+)"', function (dir, file)
             if dir == "meshes" then
-                meshes[#meshes+1] = file:match "^([^/]+)%.bin$"
+                if file == "unit_sphere.bin" then
+                    copyfiles[#copyfiles+1] = "meshes/"..file
+                else
+                    meshes[#meshes+1] = file:match "^([^/]+)%.bin$"
+                end
             elseif dir == "textures" then
                 if file:match "%%s" then
                     assert(name == "18-ibl")
@@ -94,7 +98,11 @@ local function generator(name)
         write(("        shaderc.compile 'examples/${NAME}/%s',"):format(shader))
     end
     for _, mesh in ipairs(meshes) do
-        write(("        geometryc.compile 'examples/assets/meshes/%s.obj',"):format(mesh))
+        if mesh == "test_scene" then
+            write "        geometryc.compile 'examples/assets/sky/test_scene.obj',"
+        else
+            write(("        geometryc.compile 'examples/assets/meshes/%s.obj',"):format(mesh))
+        end
     end
     for _, texture in ipairs(textures) do
         write(("        texturec.compile 'examples/runtime/textures/%s',"):format(texture))

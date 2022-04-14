@@ -1,6 +1,7 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
+local copy = require 'examples.copyfile'
 
 lm:exe '31-rsm' {
     rootdir = lm.BgfxDir / 'examples/31-rsm',
@@ -21,7 +22,7 @@ lm:exe '31-rsm' {
         geometryc.compile 'examples/assets/meshes/hollowcube.obj',
         geometryc.compile 'examples/assets/meshes/orb.obj',
         geometryc.compile 'examples/assets/meshes/tree.obj',
-        geometryc.compile 'examples/assets/meshes/unit_sphere.obj',
+        copy.compile 'examples/runtime/meshes/unit_sphere.bin',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

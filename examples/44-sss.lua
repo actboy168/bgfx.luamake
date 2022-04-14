@@ -2,6 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
+local copy = require 'examples.copyfile'
 
 lm:exe '44-sss' {
     rootdir = lm.BgfxDir / 'examples/44-sss',
@@ -19,9 +20,9 @@ lm:exe '44-sss' {
         geometryc.compile 'examples/assets/meshes/cube.obj',
         geometryc.compile 'examples/assets/meshes/hollowcube.obj',
         geometryc.compile 'examples/assets/meshes/tree.obj',
-        geometryc.compile 'examples/assets/meshes/unit_sphere.obj',
         texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
         texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
+        copy.compile 'examples/runtime/meshes/unit_sphere.bin',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

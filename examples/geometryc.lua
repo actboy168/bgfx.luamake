@@ -18,6 +18,7 @@ local geometryc_args <const> = {
     tree1b_lod1_2 = {"-c"},
     tree1b_lod2_1 = {"-c"},
     tree1b_lod2_2 = {"-c"},
+    test_scene = {},
 }
 
 local m = {}
