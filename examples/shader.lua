@@ -101,7 +101,8 @@ local function commandline(cfg)
     return commands
 end
 
-local function compile_shader(path, stage, name)
+local function compile(fullpath)
+    local path, stage, name = fullpath:match "^(.*)/([cfv]s)_([^/]+)%.sc$"
     local target_name = ("shader-%s_%s"):format(stage, name)
     local input = lm.BgfxDir / ("%s/%s_%s.sc"):format(path, stage, name)
     local output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_types[lm.os], stage, name)
@@ -119,22 +120,6 @@ local function compile_shader(path, stage, name)
     }
 end
 
-local function compile(cfg)
-    compile_shader(cfg.path, "fs", cfg.name)
-    compile_shader(cfg.path, "vs", cfg.name)
-    lm:phony ("shader-"..cfg.name) {
-        deps = {
-            "shader-fs_"..cfg.name,
-            "shader-vs_"..cfg.name,
-        }
-    }
-end
-
-local function compile_cs(cfg)
-    compile_shader(cfg.path, "cs", cfg.name)
-end
-
 return {
     compile = compile,
-    compile_cs = compile_cs,
 }
