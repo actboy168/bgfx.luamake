@@ -1,16 +1,9 @@
 local lm = require "luamake"
-local shader = require "examples.shader"
-
-shader.compile {
-    path = "examples/02-metaballs/",
-    name = "metaballs",
-}
 
 lm:exe "02-metaballs" {
     rootdir = lm.BgfxDir / "examples/02-metaballs",
     deps = {
         "example-runtime",
-        "shader-metaballs",
     },
     defines = "ENTRY_CONFIG_IMPLEMENT_MAIN=1",
     includes = {
