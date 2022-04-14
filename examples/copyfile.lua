@@ -1,11 +1,11 @@
 local lm = require "luamake"
 
 local function compile(fullpath)
-    local name = fullpath:match "/([^/]*%.%w+)$"
-    local target_name = ("font-%s"):format(name)
+    local dir, name = fullpath:match "/([^/]+)/([^/]+)$"
+    local target_name = ("copy-%s-%s"):format(dir, name)
     lm:copy (target_name) {
         input = lm.BgfxDir / fullpath,
-        output = ("$bin/font/%s"):format(name),
+        output = ("$bin/%s/%s"):format(dir, name),
     }
     return target_name
 end

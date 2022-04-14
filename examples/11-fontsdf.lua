@@ -1,11 +1,12 @@
 local lm = require 'luamake'
-local font = require 'examples.font'
+local copy = require 'examples.copyfile'
 
 lm:exe '11-fontsdf' {
     rootdir = lm.BgfxDir / 'examples/11-fontsdf',
     deps = {
         'example-runtime',
-        font.compile 'examples/runtime/font/special_elite.ttf',
+        copy.compile 'examples/runtime/font/special_elite.ttf',
+        copy.compile 'examples/runtime/text/sherlock_holmes_a_scandal_in_bohemia_arthur_conan_doyle.txt',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

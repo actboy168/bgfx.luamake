@@ -13,8 +13,10 @@ lm:exe '18-ibl' {
         shaderc.compile 'examples/18-ibl/vs_ibl_skybox.sc',
         geometryc.compile 'examples/assets/meshes/bunny.obj',
         geometryc.compile 'examples/assets/meshes/orb.obj',
-        texturec.compile 'examples/runtime/textures/%s_irr.dds',
-        texturec.compile 'examples/runtime/textures/%s_lod.dds',
+        texturec.compile 'examples/runtime/textures/bolonga_irr.dds',
+        texturec.compile 'examples/runtime/textures/bolonga_lod.dds',
+        texturec.compile 'examples/runtime/textures/kyoto_irr.dds',
+        texturec.compile 'examples/runtime/textures/kyoto_lod.dds',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

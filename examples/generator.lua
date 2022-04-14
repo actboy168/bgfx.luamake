@@ -19,7 +19,8 @@ local function generator(name)
     local shaders = {}
     local meshes = {}
     local textures = {}
-    local fonts = {}
+    local copyfiles = {}
+    local STDC_FORMAT_MACROS = false
 
     for file in fs.pairs(projectdir) do
         local filename = file:filename():string()
@@ -45,16 +46,31 @@ local function generator(name)
             if dir == "meshes" then
                 meshes[#meshes+1] = file:match "^([^/]+)%.bin$"
             elseif dir == "textures" then
-                textures[#textures+1] = file
+                if file:match "%%s" then
+                    assert(name == "18-ibl")
+                    textures[#textures+1] = file:format "bolonga"
+                    textures[#textures+1] = file:format "kyoto"
+                else
+                    textures[#textures+1] = file
+                end
             elseif dir == "font" then
-                fonts[#fonts+1] = file:match "^([^/]+%.ttf)$"
-                fonts[#fonts+1] = file:match "^([^/]+%.otf)$"
+                if file:match "%.ttf$" then
+                    copyfiles[#copyfiles+1] = "font/"..file
+                elseif file:match "%.otf$" then
+                    copyfiles[#copyfiles+1] = "font/"..file
+                end
+            elseif dir == "text" then
+                copyfiles[#copyfiles+1] = "text/"..file
             end
+        end)
+        :gsub("PRIx64", function ()
+            assert(name == "07-callback")
+            STDC_FORMAT_MACROS = true
         end)
     end
     table.sort(meshes)
     table.sort(textures)
-    table.sort(fonts)
+    table.sort(copyfiles)
 
     write "local lm = require 'luamake'"
     if #shaders > 0 then
@@ -66,8 +82,8 @@ local function generator(name)
     if #textures > 0 then
         write "local texturec = require 'examples.texturec'"
     end
-    if #fonts > 0 then
-        write "local font = require 'examples.font'"
+    if #copyfiles > 0 then
+        write "local copy = require 'examples.copyfile'"
     end
     write ""
     write "lm:exe '${NAME}' {"
@@ -83,8 +99,8 @@ local function generator(name)
     for _, texture in ipairs(textures) do
         write(("        texturec.compile 'examples/runtime/textures/%s',"):format(texture))
     end
-    for _, font in ipairs(fonts) do
-        write(("        font.compile 'examples/runtime/font/%s',"):format(font))
+    for _, copyfile in ipairs(copyfiles) do
+        write(("        copy.compile 'examples/runtime/%s',"):format(copyfile))
     end
     write "    },"
     write "    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',"
@@ -103,6 +119,11 @@ local function generator(name)
         write(("        '%s',"):format(filename))
     end
     write "    },"
+    if STDC_FORMAT_MACROS then
+        write "    msvc = {"
+        write "        defines = '__STDC_FORMAT_MACROS'"
+        write "    }"
+    end
     write "}"
     write ""
 

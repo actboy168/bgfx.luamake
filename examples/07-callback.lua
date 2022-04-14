@@ -19,4 +19,7 @@ lm:exe '07-callback' {
     sources = {
         'callback.cpp',
     },
+    msvc = {
+        defines = '__STDC_FORMAT_MACROS'
+    }
 }

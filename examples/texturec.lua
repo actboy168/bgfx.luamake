@@ -1,9 +1,9 @@
 local lm = require "luamake"
 
+--TODO use texturec compile
 --require "tools.texturec"
 
 local function compile(fullpath)
-    --TODO use texturec compile
     local name = fullpath:match "/([^/]*%.%w+)$"
     local target_name = ("texture-%s"):format(name)
     lm:copy (target_name) {
