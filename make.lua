@@ -1,13 +1,15 @@
 local lm = require "luamake"
 local fs = require "bee.filesystem"
 
+lm.mode = "debug"
+lm.builddir = ("build/%s/%s"):format(lm.os, lm.mode)
+
 if not pcall(require, "env") then
     lm.BgfxDir = lm:path "./bgfx/"
     lm.BxDir = lm:path "./bx/"
     lm.BimgDir = lm:path "./bimg/"
 end
 
-lm.mode = "debug"
 lm.cxx = "c++17"
 
 lm.warnings = {

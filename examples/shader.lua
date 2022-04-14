@@ -38,6 +38,11 @@ local function compile(cfg)
     }
 end
 
+local function compile_cs(cfg)
+    compile_shader(cfg.path, "cs", cfg.name)
+end
+
 return {
     compile = compile,
+    compile_cs = compile_cs,
 }

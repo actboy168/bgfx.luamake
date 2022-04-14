@@ -10,3 +10,7 @@ Run example
 
 Or
 > luamake -runtest 00-helloworld
+
+##TODO
+
+* Compile shader support to automatically generate dependencies using `--depends`.
