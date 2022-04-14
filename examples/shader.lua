@@ -1,4 +1,5 @@
 local lm = require "luamake"
+local fs = require "bee.filesystem"
 
 local platforms <const> = {
     windows = "windows",
@@ -118,8 +119,22 @@ local function compile(fullpath)
         output = output,
         deps = "shaderc",
     }
+    return target_name
+end
+
+local function compileall(dir)
+    local r = {}
+    local path = tostring(lm.BgfxDir.."/"..dir)
+    for file in fs.pairs(path) do
+        local filename = file:filename():string()
+        if filename:match "^[cfv]s_[^/]+%.sc$" then
+            r[#r+1] = compile(dir.."/"..filename)
+        end
+    end
+    return r
 end
 
 return {
     compile = compile,
+    compileall = compileall,
 }

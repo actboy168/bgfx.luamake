@@ -2,9 +2,6 @@ local lm = require "luamake"
 local shader = require "examples.shader"
 local geometryc = require "examples.geometryc"
 
-shader.compile "examples/42-bunnylod/vs_bunnylod.sc"
-shader.compile "examples/42-bunnylod/fs_bunnylod.sc"
-
 geometryc.compile {
     name = "bunny_patched",
     "--packnormal", "1",
@@ -14,8 +11,7 @@ lm:exe "42-bunnylod" {
     rootdir = lm.BgfxDir / "examples/42-bunnylod",
     deps = {
         "example-runtime",
-        "shader-vs_bunnylod",
-        "shader-fs_bunnylod",
+        shader.compileall "examples/42-bunnylod",
         "mesh-bunny_patched",
     },
     defines = "ENTRY_CONFIG_IMPLEMENT_MAIN=1",
