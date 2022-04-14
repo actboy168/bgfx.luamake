@@ -105,10 +105,8 @@ local function commandline(cfg)
 end
 
 local function compile(fullpath)
-    local path, stage, name = fullpath:match "^(.*)/([cfv]s)_([^/]+)%.sc$"
+    local _, stage, name = fullpath:match "^(.*)/([cfv]s)_([^/]+)%.sc$"
     local target_name = ("shader-%s_%s"):format(stage, name)
-    local input = lm.BgfxDir / ("%s/%s_%s.sc"):format(path, stage, name)
-    local output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_types[lm.os], stage, name)
     lm:build (target_name) {
         "$bin/shaderc",
         commandline {
@@ -117,9 +115,10 @@ local function compile(fullpath)
                 lm.BgfxDir / "src"
             }
         },
-        input = input,
-        output = output,
+        input = lm.BgfxDir / fullpath,
+        output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_types[lm.os], stage, name),
         deps = "shaderc",
+        description = "Compile shader $in"
     }
     return target_name
 end
