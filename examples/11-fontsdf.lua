@@ -1,9 +1,11 @@
 local lm = require 'luamake'
+local font = require 'examples.font'
 
 lm:exe '11-fontsdf' {
     rootdir = lm.BgfxDir / 'examples/11-fontsdf',
     deps = {
         'example-runtime',
+        font.compile 'examples/runtime/font/special_elite.ttf',
     },
     defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {

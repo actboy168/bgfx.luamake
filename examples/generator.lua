@@ -19,6 +19,7 @@ local function generator(name)
     local shaders = {}
     local meshes = {}
     local textures = {}
+    local fonts = {}
 
     for file in fs.pairs(projectdir) do
         local filename = file:filename():string()
@@ -40,16 +41,20 @@ local function generator(name)
 
     for _, filename in ipairs(cpp_sources) do
         local content = readall(projectdir.."/"..filename)
-        content
-            :gsub('"meshes/([^/]*)%.bin"', function (mesh)
-                meshes[#meshes+1] = mesh
-            end)
-            :gsub('"textures/([^/]*%.%w+)"', function (texture)
-                textures[#textures+1] = texture
-            end)
+        content:gsub('"(%w+)/([^/]+%.%w+)"', function (dir, file)
+            if dir == "meshes" then
+                meshes[#meshes+1] = file:match "^([^/]+)%.bin$"
+            elseif dir == "textures" then
+                textures[#textures+1] = file
+            elseif dir == "font" then
+                fonts[#fonts+1] = file:match "^([^/]+%.ttf)$"
+                fonts[#fonts+1] = file:match "^([^/]+%.otf)$"
+            end
+        end)
     end
     table.sort(meshes)
     table.sort(textures)
+    table.sort(fonts)
 
     write "local lm = require 'luamake'"
     if #shaders > 0 then
@@ -60,6 +65,9 @@ local function generator(name)
     end
     if #textures > 0 then
         write "local texturec = require 'examples.texturec'"
+    end
+    if #fonts > 0 then
+        write "local font = require 'examples.font'"
     end
     write ""
     write "lm:exe '${NAME}' {"
@@ -74,6 +82,9 @@ local function generator(name)
     end
     for _, texture in ipairs(textures) do
         write(("        texturec.compile 'examples/runtime/textures/%s',"):format(texture))
+    end
+    for _, font in ipairs(fonts) do
+        write(("        font.compile 'examples/runtime/font/%s',"):format(font))
     end
     write "    },"
     write "    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',"

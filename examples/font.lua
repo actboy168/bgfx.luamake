@@ -1,14 +1,11 @@
 local lm = require "luamake"
 
---require "tools.texturec"
-
 local function compile(fullpath)
-    --TODO use texturec compile
     local name = fullpath:match "/([^/]*%.%w+)$"
-    local target_name = ("texture-%s"):format(name)
+    local target_name = ("font-%s"):format(name)
     lm:copy (target_name) {
         input = lm.BgfxDir / fullpath,
-        output = ("$bin/textures/%s"):format(name),
+        output = ("$bin/font/%s"):format(name),
     }
     return target_name
 end
