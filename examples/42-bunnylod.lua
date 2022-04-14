@@ -1,9 +1,15 @@
 local lm = require "luamake"
 local shader = require "examples.shader"
+local geometryc = require "examples.geometryc"
 
 shader.compile {
     path = "examples/42-bunnylod/",
     name = "bunnylod",
+}
+
+geometryc.compile {
+    name = "bunny_patched",
+    "--packnormal", "1",
 }
 
 lm:exe "42-bunnylod" {
@@ -11,6 +17,7 @@ lm:exe "42-bunnylod" {
     deps = {
         "example-runtime",
         "shader-bunnylod",
+        "mesh-bunny_patched",
     },
     defines = "ENTRY_CONFIG_IMPLEMENT_MAIN=1",
     includes = {

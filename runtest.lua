@@ -2,7 +2,10 @@ local testfile, cwd = ...
 
 local subprocess = require "bee.subprocess"
 local platform = require "bee.platform"
+local fs = require "bee.filesystem"
 local EXE = platform.OS == "Windows" and ".exe" or ""
+
+fs.create_directories(cwd .."/temp")
 
 local process = assert(subprocess.spawn {
     testfile..EXE,

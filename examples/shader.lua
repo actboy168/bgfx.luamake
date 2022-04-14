@@ -12,7 +12,7 @@ local shader_types <const> = {
 local function compile_shader(path, stage, name)
     local target_name = ("shader-%s_%s"):format(stage, name)
     local input = lm.BgfxDir / ("%s/%s_%s.sc"):format(path, stage, name)
-    local output = lm.BgfxDir / ("examples/runtime/shaders/%s/%s_%s.bin"):format(shader_types[lm.os], stage, name)
+    local output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_types[lm.os], stage, name)
     lm:build (target_name) {
         "$bin/shaderc",
         preprocess {

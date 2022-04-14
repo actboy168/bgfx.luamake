@@ -65,6 +65,7 @@ end
 require "tools.shaderc"
 require "tools.texturec"
 require "tools.texturev"
+require "tools.geometryc"
 
 require "examples.common"
 
@@ -86,7 +87,7 @@ if lm.runtest then
 
     require("examples."..test)
     lm:build ("run-"..test) {
-        "$luamake", "lua", "runtest.lua", "$bin/"..test, lm.BgfxDir / "examples/runtime",
+        "$luamake", "lua", "runtest.lua", "$bin/"..test, "$bin",
         deps = test,
     }
     lm:default {
