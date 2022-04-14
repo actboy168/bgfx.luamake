@@ -22,6 +22,13 @@ lm:lib "example-common" {
         sources = {
             "examples/common/**/*.mm"
         }
+    },
+    clang = {
+        flags = {
+            "-Wno-comment",
+            "-Wno-deprecated-declarations",
+            "-Wno-unused-function"
+        }
     }
 }
 
@@ -40,4 +47,12 @@ lm:source_set "example-runtime" {
             "comdlg32"
         }
     },
+    macos = {
+        frameworks = {
+            "Cocoa",
+            "IOKit",
+            "Metal",
+            "QuartzCore",
+        }
+    }
 }

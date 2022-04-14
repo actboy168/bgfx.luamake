@@ -39,11 +39,6 @@ local bgfxLib = {
     msvc = {
         defines = "__STDC_FORMAT_MACROS",
     },
-    clang = {
-        flags = {
-            "-Wno-unused-variable"
-        }
-    },
     windows = {
         includes = "3rdparty/dxsdk/include",
     },

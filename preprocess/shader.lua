@@ -1,10 +1,17 @@
 local lm = require "luamake"
-local fs = require "bee.filesystem"
+
+local platform <const> = {
+    windows = "windows",
+    ios = "ios",
+    macos = "osx",
+    linux = "linux",
+    android = "android",
+}
 
 local renderers <const> = {
     windows = "direct3d11",
     ios = "metal",
-    macos = "metal",
+    osx = "metal",
     linux = "vulkan",
     android = "vulkan",
 }
@@ -40,7 +47,7 @@ local shader_options <const> = {
 
 
 return function (cfg)
-    local platform = cfg.platform or lm.os
+    local platform = cfg.platform or platform[lm.os]
     local renderer = cfg.renderer or renderers[platform]
     local stagename = cfg.stage
     local commands = {
