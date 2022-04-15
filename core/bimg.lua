@@ -52,7 +52,7 @@ lm:source_set "bimg" {
     }
 }
 
-lm:source_set "bimg_decode" {
+lm:source_set "bimg-decode" {
     rootdir = lm.BimgDir,
     includes = {
         lm.BxDir / "include",
@@ -72,7 +72,7 @@ lm:source_set "bimg-iqa" {
     sources = "3rdparty/iqa/source/*.c",
 }
 
-lm:source_set "bimg_encode" {
+lm:source_set "bimg-encode" {
     rootdir = lm.BimgDir,
     deps = {
         "astc-codec",

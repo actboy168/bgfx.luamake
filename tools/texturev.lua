@@ -7,17 +7,13 @@ lm:exe "texturev" {
     rootdir = lm.BgfxDir,
     deps = {
         "example-common",
-        "bimg_decode",
-        "bimg_encode",
+        "bimg-decode",
         "bgfx-lib",
-        "bimg",
-        "bx",
     },
     includes = {
         lm.BxDir / "include",
         lm.BimgDir / "include",
         "include",
-        "3rdparty/iqa/include",
         "3rdparty",
         "examples/common",
     },

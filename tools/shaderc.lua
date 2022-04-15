@@ -162,7 +162,7 @@ lm:exe "shaderc" {
         lm.BimgDir / "include",
         lm.BgfxDir / "include",
         "3rdparty/webgpu/include",
-         "3rdparty/dxsdk/include",
+        "3rdparty/dxsdk/include",
         "3rdparty/fcpp",
         "3rdparty/glslang/glslang/Public",
         "3rdparty/glslang/glslang/Include",

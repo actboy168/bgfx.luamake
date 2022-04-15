@@ -42,7 +42,7 @@ lm:lib "example-common" {
 lm:source_set "example-runtime" {
     deps = {
         "bx",
-        "bimg_decode",
+        "bimg-decode",
         "bgfx-lib",
         "example-common",
     },

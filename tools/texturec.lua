@@ -5,8 +5,8 @@ require "utf8.support-utf8"
 lm:exe "texturec" {
     rootdir = lm.BimgDir,
     deps = {
-        "bimg_decode",
-        "bimg_encode",
+        "bimg-decode",
+        "bimg-encode",
         "bimg",
         "bx",
     },

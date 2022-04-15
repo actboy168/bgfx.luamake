@@ -1,12 +1,10 @@
 local lm = require "luamake"
 
-require "examples.common"
 require "utf8.support-utf8"
 
 lm:exe "geometryc" {
     rootdir = lm.BgfxDir,
     deps = {
-        "example-common",
         "bx",
     },
     includes = {
@@ -16,7 +14,8 @@ lm:exe "geometryc" {
     },
     sources = {
         "tools/geometryc/*.cpp",
-        "src/vertexlayout.cpp"
+        "src/vertexlayout.cpp",
+        "3rdparty/meshoptimizer/src/*.cpp",
     },
     windows = {
         deps = "bgfx-support-utf8",
