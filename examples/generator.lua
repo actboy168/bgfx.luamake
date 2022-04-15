@@ -31,7 +31,9 @@ local function generator(name)
             cpp_sources[#cpp_sources+1] = filename
         elseif ext == ".sc" then
             if filename:match "^[cfv]s_" then
-                shaders[#shaders+1] = filename
+                if not fs.exists(file:replace_extension ".bin.h") then
+                    shaders[#shaders+1] = filename
+                end
             end
         end
     end
