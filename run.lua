@@ -9,7 +9,7 @@ local cwd = fs.path(testfile):parent_path()
 fs.create_directories(cwd / "temp")
 
 local process = assert(subprocess.spawn {
-    testfile..EXE,
+    fs.absolute(testfile..EXE),
     cwd = cwd,
     stdout = true,
     stderr = "stdout",
