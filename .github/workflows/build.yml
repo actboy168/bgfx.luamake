@@ -1,0 +1,25 @@
+name: build
+on: push
+jobs:
+  compile:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+      with:
+        repository: bkaradzic/bx
+        path: ./bx
+    - uses: actions/checkout@v3
+      with:
+        repository: bkaradzic/bimg
+        path: ./bimg
+    - uses: actions/checkout@v3
+      with:
+        repository: bkaradzic/bgfx
+        path: ./bgfx
+    - uses: actboy168/setup-luamake@master
+    - run: luamake
