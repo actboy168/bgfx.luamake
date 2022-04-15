@@ -144,7 +144,7 @@ local function generator(name)
 end
 
 for example in fs.pairs(BgfxDir.."/examples/") do
-    local name = example:string():match '/(%d%d-.*)$'
+    local name = example:string():match '/(%d%d%-[^/]*)$'
     if name then
         generator(name)
     end
