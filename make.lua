@@ -2,7 +2,16 @@ local lm = require "luamake"
 local fs = require "bee.filesystem"
 
 lm.mode = "debug"
-lm.builddir = ("build/%s/%s"):format(lm.os, lm.mode)
+local plat = (function ()
+    if lm.os == "windows" then
+        if lm.compiler == "msvc" then
+            return "msvc"
+        end
+        return "mingw"
+    end
+    return lm.os
+end)()
+lm.builddir = ("build/%s/%s"):format(plat, lm.mode)
 
 if not pcall(require, "env") then
     lm.BgfxDir = lm:path "./bgfx/"

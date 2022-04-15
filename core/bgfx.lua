@@ -74,7 +74,11 @@ lm:lib "bgfx-lib" (bgfxLib)
 lm:src "bgfx-dll" (bgfxDll)
 lm:dll "bgfx-dll" {
     windows = {
-        links = { "gdi32", "psapi", "user32" }
+        links = {
+            "gdi32",
+            "psapi",
+            "user32"
+        }
     },
     macos = {
         frameworks = {
