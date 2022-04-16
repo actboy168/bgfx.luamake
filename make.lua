@@ -51,6 +51,7 @@ lm.ios = {
 
 lm.clang = {
     flags = {
+        "-Wno-unknown-warning-option",
         "-Wno-tautological-constant-compare",
         "-Wno-unused-variable",
         "-Wno-unused-but-set-variable"

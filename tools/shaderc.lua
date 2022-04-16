@@ -131,7 +131,7 @@ lm:source_set "spirv-opt" {
 
 lm:source_set "spirv-cross" {
     rootdir = lm.BgfxDir / "3rdparty/spirv-cross",
-    defines  = "SPIRV_CROSS_EXCEPTIONS_TO_ASSERTIONS",
+    defines = "SPIRV_CROSS_EXCEPTIONS_TO_ASSERTIONS",
     includes = "include",
     sources = {
         "spirv_cfg.cpp",
