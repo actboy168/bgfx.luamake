@@ -12,7 +12,3 @@ Run example
 
 Or
 > luamake --run 00-helloworld
-
-### TODO
-
-* Compile shader support to automatically generate dependencies using `--depends`.

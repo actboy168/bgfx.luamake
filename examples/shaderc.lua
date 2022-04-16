@@ -65,6 +65,7 @@ local function commandline(cfg)
         "--platform", platform,
         "--type", stage_types[stagename],
         "-p", shader_options[renderer][stagename],
+        "--depends"
     }
     if cfg.varying_path then
         commands[#commands+1] = "--varyingdef"
@@ -105,6 +106,26 @@ local function commandline(cfg)
 end
 
 local m = {}
+local rule = {}
+
+local function set_rule(stage)
+    if rule[stage] then
+        return
+    end
+    rule[stage] = true
+    lm:rule ("compile_shader_"..stage) {
+        "$bin/shaderc",
+        commandline {
+            stage = stage,
+            includes = {
+                lm.BgfxDir / "src"
+            }
+        },
+        description = "Compile shader $in",
+        deps = "gcc",
+        depfile = "$out.d",
+    }
+end
 
 local function compile(fullpath)
     local _, stage, name = fullpath:match "^(.*)/([cfv]s)_([^/]+)%.sc$"
@@ -113,18 +134,14 @@ local function compile(fullpath)
         return target_name
     end
     m[target_name] = true
+
+    set_rule(stage)
+
     lm:build (target_name) {
-        "$bin/shaderc",
-        commandline {
-            stage = stage,
-            includes = {
-                lm.BgfxDir / "src"
-            }
-        },
+        rule = "compile_shader_"..stage,
         input = lm.BgfxDir / fullpath,
         output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_types[lm.os], stage, name),
         deps = "shaderc",
-        description = "Compile shader $in"
     }
     return target_name
 end
