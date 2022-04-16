@@ -1,6 +1,7 @@
 local lm = require "luamake"
 local fs = require "bee.filesystem"
 
+lm.compile_commands = "build"
 lm.mode = "debug"
 local plat = (function ()
     if lm.os == "windows" then
