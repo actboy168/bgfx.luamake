@@ -69,8 +69,9 @@ end
 
 require "examples.common"
 
-lm:build "generator" {
-    "$luamake", "lua", "examples/generator.lua", lm.BgfxDir,
+lm:runlua "generator" {
+    script = "examples/generator.lua",
+    args = { lm.BgfxDir },
 }
 
 local examples = {}
@@ -90,8 +91,9 @@ if lm.run then
     test = examples[test] or test
 
     require("examples."..test)
-    lm:build ("run-"..test) {
-        "$luamake", "lua", "run.lua", "$bin/"..test,
+    lm:runlua ("run-"..test) {
+        script = "run.lua",
+        args = { "$bin/"..test },
         deps = test,
     }
     lm:default { "run-"..test }
