@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '36-sky' {
-    rootdir = lm.BgfxDir / 'examples/36-sky',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/36-sky/fs_sky.sc',
@@ -24,6 +24,6 @@ lm:exe '36-sky' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'sky.cpp',
+        'examples/36-sky/sky.cpp',
     },
 }

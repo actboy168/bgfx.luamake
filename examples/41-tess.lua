@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
 lm:exe '41-tess' {
-    rootdir = lm.BgfxDir / 'examples/41-tess',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/41-tess/cs_terrain_init.sc',
@@ -24,6 +24,6 @@ lm:exe '41-tess' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'tess.cpp',
+        'examples/41-tess/tess.cpp',
     },
 }

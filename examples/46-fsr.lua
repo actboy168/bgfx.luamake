@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '46-fsr' {
-    rootdir = lm.BgfxDir / 'examples/46-fsr',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/46-fsr/cs_fsr_bilinear_16.sc',
@@ -32,7 +32,7 @@ lm:exe '46-fsr' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'app.cpp',
-        'fsr.cpp',
+        'examples/46-fsr/app.cpp',
+        'examples/46-fsr/fsr.cpp',
     },
 }

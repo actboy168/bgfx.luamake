@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '03-raymarch' {
-    rootdir = lm.BgfxDir / 'examples/03-raymarch',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/03-raymarch/fs_raymarching.sc',
@@ -17,6 +17,6 @@ lm:exe '03-raymarch' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'raymarch.cpp',
+        'examples/03-raymarch/raymarch.cpp',
     },
 }

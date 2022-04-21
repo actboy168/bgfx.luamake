@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '17-drawstress' {
-    rootdir = lm.BgfxDir / 'examples/17-drawstress',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '17-drawstress' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'drawstress.cpp',
+        'examples/17-drawstress/drawstress.cpp',
     },
 }

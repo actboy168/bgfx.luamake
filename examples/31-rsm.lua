@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local copy = require 'examples.copyfile'
 
 lm:exe '31-rsm' {
-    rootdir = lm.BgfxDir / 'examples/31-rsm',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/31-rsm/fs_rsm_combine.sc',
@@ -33,6 +33,6 @@ lm:exe '31-rsm' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'reflectiveshadowmap.cpp',
+        'examples/31-rsm/reflectiveshadowmap.cpp',
     },
 }

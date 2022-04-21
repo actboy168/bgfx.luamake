@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '01-cubes' {
-    rootdir = lm.BgfxDir / 'examples/01-cubes',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/01-cubes/fs_cubes.sc',
@@ -17,6 +17,6 @@ lm:exe '01-cubes' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'cubes.cpp',
+        'examples/01-cubes/cubes.cpp',
     },
 }

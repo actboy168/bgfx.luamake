@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
 lm:exe '33-pom' {
-    rootdir = lm.BgfxDir / 'examples/33-pom',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/33-pom/fs_pom.sc',
@@ -21,6 +21,6 @@ lm:exe '33-pom' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'pom.cpp',
+        'examples/33-pom/pom.cpp',
     },
 }

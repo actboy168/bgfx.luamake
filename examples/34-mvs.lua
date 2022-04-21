@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '34-mvs' {
-    rootdir = lm.BgfxDir / 'examples/34-mvs',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '34-mvs' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'mvs.cpp',
+        'examples/34-mvs/mvs.cpp',
     },
 }

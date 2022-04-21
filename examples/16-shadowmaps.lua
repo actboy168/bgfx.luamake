@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '16-shadowmaps' {
-    rootdir = lm.BgfxDir / 'examples/16-shadowmaps',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/16-shadowmaps/fs_shadowmaps_color_black.sc',
@@ -77,6 +77,6 @@ lm:exe '16-shadowmaps' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'shadowmaps.cpp',
+        'examples/16-shadowmaps/shadowmaps.cpp',
     },
 }

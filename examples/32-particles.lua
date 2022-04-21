@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local texturec = require 'examples.texturec'
 
 lm:exe '32-particles' {
-    rootdir = lm.BgfxDir / 'examples/32-particles',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         texturec.compile 'examples/runtime/textures/particle.ktx',
@@ -16,6 +16,6 @@ lm:exe '32-particles' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'particles.cpp',
+        'examples/32-particles/particles.cpp',
     },
 }

@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 
 lm:exe '28-wireframe' {
-    rootdir = lm.BgfxDir / 'examples/28-wireframe',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/28-wireframe/fs_wf_mesh.sc',
@@ -23,6 +23,6 @@ lm:exe '28-wireframe' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'wireframe.cpp',
+        'examples/28-wireframe/wireframe.cpp',
     },
 }

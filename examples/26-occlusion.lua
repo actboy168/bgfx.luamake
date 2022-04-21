@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '26-occlusion' {
-    rootdir = lm.BgfxDir / 'examples/26-occlusion',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '26-occlusion' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'occlusion.cpp',
+        'examples/26-occlusion/occlusion.cpp',
     },
 }

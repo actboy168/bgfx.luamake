@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '18-ibl' {
-    rootdir = lm.BgfxDir / 'examples/18-ibl',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/18-ibl/fs_ibl_mesh.sc',
@@ -27,6 +27,6 @@ lm:exe '18-ibl' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'ibl.cpp',
+        'examples/18-ibl/ibl.cpp',
     },
 }

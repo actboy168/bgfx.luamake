@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local copy = require 'examples.copyfile'
 
 lm:exe '20-nanovg' {
-    rootdir = lm.BgfxDir / 'examples/20-nanovg',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         copy.compile 'examples/runtime/font/NotoEmoji-Regular.ttf',
@@ -20,6 +20,6 @@ lm:exe '20-nanovg' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'nanovg.cpp',
+        'examples/20-nanovg/nanovg.cpp',
     },
 }

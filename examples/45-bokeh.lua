@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '45-bokeh' {
-    rootdir = lm.BgfxDir / 'examples/45-bokeh',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/45-bokeh/fs_bokeh_copy.sc',
@@ -33,6 +33,6 @@ lm:exe '45-bokeh' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'bokeh.cpp',
+        'examples/45-bokeh/bokeh.cpp',
     },
 }

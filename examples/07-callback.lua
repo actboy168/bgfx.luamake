@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '07-callback' {
-    rootdir = lm.BgfxDir / 'examples/07-callback',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/07-callback/fs_callback.sc',
@@ -17,7 +17,7 @@ lm:exe '07-callback' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'callback.cpp',
+        'examples/07-callback/callback.cpp',
     },
     msvc = {
         defines = '__STDC_FORMAT_MACROS'

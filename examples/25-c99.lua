@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '25-c99' {
-    rootdir = lm.BgfxDir / 'examples/25-c99',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '25-c99' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'helloworld.c',
+        'examples/25-c99/helloworld.c',
     },
 }

@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '05-instancing' {
-    rootdir = lm.BgfxDir / 'examples/05-instancing',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/05-instancing/fs_instancing.sc',
@@ -17,6 +17,6 @@ lm:exe '05-instancing' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'instancing.cpp',
+        'examples/05-instancing/instancing.cpp',
     },
 }

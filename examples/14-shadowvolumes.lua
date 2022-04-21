@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '14-shadowvolumes' {
-    rootdir = lm.BgfxDir / 'examples/14-shadowvolumes',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/14-shadowvolumes/fs_shadowvolume_color_lighting.sc',
@@ -48,6 +48,6 @@ lm:exe '14-shadowvolumes' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'shadowvolumes.cpp',
+        'examples/14-shadowvolumes/shadowvolumes.cpp',
     },
 }

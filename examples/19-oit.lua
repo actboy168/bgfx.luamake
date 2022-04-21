@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '19-oit' {
-    rootdir = lm.BgfxDir / 'examples/19-oit',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/19-oit/fs_oit.sc',
@@ -22,6 +22,6 @@ lm:exe '19-oit' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'oit.cpp',
+        'examples/19-oit/oit.cpp',
     },
 }

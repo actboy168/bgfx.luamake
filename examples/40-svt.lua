@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
 lm:exe '40-svt' {
-    rootdir = lm.BgfxDir / 'examples/40-svt',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/40-svt/fs_vt_mip.sc',
@@ -20,7 +20,7 @@ lm:exe '40-svt' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'svt.cpp',
-        'vt.cpp',
+        'examples/40-svt/svt.cpp',
+        'examples/40-svt/vt.cpp',
     },
 }

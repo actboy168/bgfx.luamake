@@ -5,7 +5,7 @@ local texturec = require 'examples.texturec'
 local copy = require 'examples.copyfile'
 
 lm:exe '44-sss' {
-    rootdir = lm.BgfxDir / 'examples/44-sss',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/44-sss/fs_screen_space_shadows.sc',
@@ -33,6 +33,6 @@ lm:exe '44-sss' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'screen_space_shadows.cpp',
+        'examples/44-sss/screen_space_shadows.cpp',
     },
 }

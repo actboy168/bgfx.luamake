@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '24-nbody' {
-    rootdir = lm.BgfxDir / 'examples/24-nbody',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/24-nbody/cs_indirect.sc',
@@ -20,6 +20,6 @@ lm:exe '24-nbody' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'nbody.cpp',
+        'examples/24-nbody/nbody.cpp',
     },
 }

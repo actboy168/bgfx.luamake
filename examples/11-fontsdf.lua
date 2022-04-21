@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local copy = require 'examples.copyfile'
 
 lm:exe '11-fontsdf' {
-    rootdir = lm.BgfxDir / 'examples/11-fontsdf',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         copy.compile 'examples/runtime/font/special_elite.ttf',
@@ -17,6 +17,6 @@ lm:exe '11-fontsdf' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'fontsdf.cpp',
+        'examples/11-fontsdf/fontsdf.cpp',
     },
 }

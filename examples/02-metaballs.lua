@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '02-metaballs' {
-    rootdir = lm.BgfxDir / 'examples/02-metaballs',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '02-metaballs' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'metaballs.cpp',
+        'examples/02-metaballs/metaballs.cpp',
     },
 }

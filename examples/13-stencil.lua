@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '13-stencil' {
-    rootdir = lm.BgfxDir / 'examples/13-stencil',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/13-stencil/fs_stencil_color_black.sc',
@@ -32,6 +32,6 @@ lm:exe '13-stencil' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'stencil.cpp',
+        'examples/13-stencil/stencil.cpp',
     },
 }

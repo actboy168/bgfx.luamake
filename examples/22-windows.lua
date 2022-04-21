@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '22-windows' {
-    rootdir = lm.BgfxDir / 'examples/22-windows',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '22-windows' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'windows.cpp',
+        'examples/22-windows/windows.cpp',
     },
 }

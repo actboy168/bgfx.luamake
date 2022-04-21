@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '27-terrain' {
-    rootdir = lm.BgfxDir / 'examples/27-terrain',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/27-terrain/fs_terrain.sc',
@@ -18,6 +18,6 @@ lm:exe '27-terrain' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'terrain.cpp',
+        'examples/27-terrain/terrain.cpp',
     },
 }

@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local copy = require 'examples.copyfile'
 
 lm:exe '10-font' {
-    rootdir = lm.BgfxDir / 'examples/10-font',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         copy.compile 'examples/runtime/font/bleeding_cowboys.ttf',
@@ -25,6 +25,6 @@ lm:exe '10-font' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'font.cpp',
+        'examples/10-font/font.cpp',
     },
 }

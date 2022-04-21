@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '43-denoise' {
-    rootdir = lm.BgfxDir / 'examples/43-denoise',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/43-denoise/fs_denoise_apply_lighting.sc',
@@ -34,6 +34,6 @@ lm:exe '43-denoise' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'denoise.cpp',
+        'examples/43-denoise/denoise.cpp',
     },
 }

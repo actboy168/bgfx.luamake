@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '09-hdr' {
-    rootdir = lm.BgfxDir / 'examples/09-hdr',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/09-hdr/fs_hdr_blur.sc',
@@ -33,6 +33,6 @@ lm:exe '09-hdr' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'hdr.cpp',
+        'examples/09-hdr/hdr.cpp',
     },
 }

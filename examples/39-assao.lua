@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '39-assao' {
-    rootdir = lm.BgfxDir / 'examples/39-assao',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/39-assao/cs_assao_apply.sc',
@@ -49,6 +49,6 @@ lm:exe '39-assao' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'assao.cpp',
+        'examples/39-assao/assao.cpp',
     },
 }

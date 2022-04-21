@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
 lm:exe '06-bump' {
-    rootdir = lm.BgfxDir / 'examples/06-bump',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/06-bump/fs_bump.sc',
@@ -21,6 +21,6 @@ lm:exe '06-bump' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'bump.cpp',
+        'examples/06-bump/bump.cpp',
     },
 }

@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 
 lm:exe '04-mesh' {
-    rootdir = lm.BgfxDir / 'examples/04-mesh',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/04-mesh/fs_mesh.sc',
@@ -19,6 +19,6 @@ lm:exe '04-mesh' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'mesh.cpp',
+        'examples/04-mesh/mesh.cpp',
     },
 }

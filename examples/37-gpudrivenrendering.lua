@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '37-gpudrivenrendering' {
-    rootdir = lm.BgfxDir / 'examples/37-gpudrivenrendering',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/37-gpudrivenrendering/cs_gdr_copy_z.sc',
@@ -22,6 +22,6 @@ lm:exe '37-gpudrivenrendering' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'gpudrivenrendering.cpp',
+        'examples/37-gpudrivenrendering/gpudrivenrendering.cpp',
     },
 }

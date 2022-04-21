@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 
 lm:exe '15-shadowmaps-simple' {
-    rootdir = lm.BgfxDir / 'examples/15-shadowmaps-simple',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/15-shadowmaps-simple/fs_sms_mesh.sc',
@@ -26,6 +26,6 @@ lm:exe '15-shadowmaps-simple' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'shadowmaps_simple.cpp',
+        'examples/15-shadowmaps-simple/shadowmaps_simple.cpp',
     },
 }

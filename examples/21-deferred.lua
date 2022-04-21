@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
 lm:exe '21-deferred' {
-    rootdir = lm.BgfxDir / 'examples/21-deferred',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/21-deferred/fs_deferred_clear_uav.sc',
@@ -33,6 +33,6 @@ lm:exe '21-deferred' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'deferred.cpp',
+        'examples/21-deferred/deferred.cpp',
     },
 }

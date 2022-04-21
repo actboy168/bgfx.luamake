@@ -4,7 +4,7 @@ local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
 lm:exe '12-lod' {
-    rootdir = lm.BgfxDir / 'examples/12-lod',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/12-lod/fs_tree.sc',
@@ -27,6 +27,6 @@ lm:exe '12-lod' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'lod.cpp',
+        'examples/12-lod/lod.cpp',
     },
 }

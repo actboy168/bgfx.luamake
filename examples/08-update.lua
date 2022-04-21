@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
 lm:exe '08-update' {
-    rootdir = lm.BgfxDir / 'examples/08-update',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/08-update/cs_update.sc',
@@ -45,6 +45,6 @@ lm:exe '08-update' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'update.cpp',
+        'examples/08-update/update.cpp',
     },
 }

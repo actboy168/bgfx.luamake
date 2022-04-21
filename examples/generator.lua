@@ -93,7 +93,7 @@ local function generator(name)
     end
     write ""
     write "lm:exe '${NAME}' {"
-    write "    rootdir = lm.BgfxDir / 'examples/${NAME}',"
+    write "    rootdir = lm.BgfxDir,"
     write "    deps = {"
     write "        'example-runtime',"
     for _, shader in ipairs(shaders) do
@@ -123,10 +123,10 @@ local function generator(name)
     write "    },"
     write "    sources = {"
     for _, filename in ipairs(c_sources) do
-        write(("        '%s',"):format(filename))
+        write(("        'examples/${NAME}/%s',"):format(filename))
     end
     for _, filename in ipairs(cpp_sources) do
-        write(("        '%s',"):format(filename))
+        write(("        'examples/${NAME}/%s',"):format(filename))
     end
     write "    },"
     if STDC_FORMAT_MACROS then

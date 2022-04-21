@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '35-dynamic' {
-    rootdir = lm.BgfxDir / 'examples/35-dynamic',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '35-dynamic' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'dynamic.cpp',
+        'examples/35-dynamic/dynamic.cpp',
     },
 }

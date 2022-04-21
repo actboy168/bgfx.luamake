@@ -1,7 +1,7 @@
 local lm = require 'luamake'
 
 lm:exe '29-debugdraw' {
-    rootdir = lm.BgfxDir / 'examples/29-debugdraw',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
     },
@@ -14,6 +14,6 @@ lm:exe '29-debugdraw' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'debugdraw.cpp',
+        'examples/29-debugdraw/debugdraw.cpp',
     },
 }

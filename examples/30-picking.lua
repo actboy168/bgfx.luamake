@@ -3,7 +3,7 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 
 lm:exe '30-picking' {
-    rootdir = lm.BgfxDir / 'examples/30-picking',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/30-picking/fs_picking_id.sc',
@@ -25,6 +25,6 @@ lm:exe '30-picking' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'picking.cpp',
+        'examples/30-picking/picking.cpp',
     },
 }

@@ -2,7 +2,7 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
 lm:exe '38-bloom' {
-    rootdir = lm.BgfxDir / 'examples/38-bloom',
+    rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/38-bloom/fs_albedo_output.sc',
@@ -22,6 +22,6 @@ lm:exe '38-bloom' {
         lm.BgfxDir / '3rdparty',
     },
     sources = {
-        'bloom.cpp',
+        'examples/38-bloom/bloom.cpp',
     },
 }
