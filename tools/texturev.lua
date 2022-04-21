@@ -23,12 +23,10 @@ lm:exe "texturev" {
     windows = {
         deps = "bgfx-support-utf8",
         links = {
-            "DelayImp",
             "comdlg32",
             "gdi32",
-            "psapi",
             "user32",
-            "Shell32",
+            "shell32",
         }
     },
     macos = {

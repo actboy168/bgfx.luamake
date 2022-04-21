@@ -7,10 +7,8 @@ lm:exe "geometryv" {
     rootdir = lm.BgfxDir,
     deps = {
         "example-common",
-        "bimg_decode",
+        "bimg-decode",
         "bgfx-lib",
-        "bimg",
-        "bx",
     },
     includes = {
         lm.BxDir / "include",
