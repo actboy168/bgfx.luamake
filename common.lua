@@ -18,6 +18,10 @@ lm.mingw = {
     includes = lm.BxDir / "include/compat/mingw",
 }
 
+lm.linux  = {
+    flags = "-fPIC"
+}
+
 lm.macos = {
     includes = lm.BxDir / "include/compat/osx",
 }
