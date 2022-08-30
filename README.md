@@ -4,8 +4,7 @@ Build [bgfx](https://github.com/bkaradzic/bgfx) with [luamake](https://github.co
 
 ### Use
 
-Build all
-> luamake
+> luamake generator
 
 Run example
 > luamake --run 00
