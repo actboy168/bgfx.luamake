@@ -55,8 +55,24 @@ if lm.run then
     }
     lm:default { "run-"..test }
 else
+    local function sortpairs(t)
+        local sort = {}
+        for k in pairs(t) do
+            sort[#sort+1] = k
+        end
+        table.sort(sort)
+        local n = 1
+        return function ()
+            local k = sort[n]
+            if k == nil then
+                return
+            end
+            n = n + 1
+            return k, t[k]
+        end
+    end
     local targets = {}
-    for _, test in pairs(examples) do
+    for _, test in sortpairs(examples) do
         require("examples."..test)
         targets[#targets+1] = test
     end
