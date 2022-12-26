@@ -47,10 +47,29 @@ if lm.run then
     end
     test = examples[test] or test
 
+    local ARGS <const> = {
+        "gl",
+        "vk",
+        "noop",
+        "d3d9",
+        "d3d11",
+        "d3d12",
+        "mtl",
+        "amd",
+        "nvidia",
+        "intel",
+        "sw",
+    }
+    local args = {}
+    for _, v in ipairs(ARGS) do
+        if lm[v] then
+            args[#args+1] = "--"..v
+        end
+    end
     require("examples."..test)
     lm:runlua ("run-"..test) {
         script = "run.lua",
-        args = { "$bin/"..test },
+        args = { "$bin/"..test, args },
         deps = test,
     }
     lm:default { "run-"..test }

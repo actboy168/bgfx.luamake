@@ -1,4 +1,4 @@
-local testfile = ...
+local testfile = arg[1]
 
 local subprocess = require "bee.subprocess"
 local platform = require "bee.platform"
@@ -9,7 +9,7 @@ local cwd = fs.path(testfile):parent_path()
 fs.create_directories(cwd / "temp")
 
 local process = assert(subprocess.spawn {
-    fs.absolute(testfile..EXE),
+    fs.absolute(testfile..EXE), table.unpack(arg, 2),
     cwd = cwd,
     stdout = true,
     stderr = "stdout",
