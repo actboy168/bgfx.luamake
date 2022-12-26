@@ -30,30 +30,32 @@ local shader_options <const> = {
         vs = "vs_5_0",
         fs = "ps_5_0",
         cs = "cs_5_0",
+        outname = "dx9",
     },
     direct3d11 = {
         vs = "vs_5_0",
         fs = "ps_5_0",
         cs = "cs_5_0",
+        outname = "dx11",
+    },
+    direct3d12 = {
+        vs = "vs_5_0",
+        fs = "ps_5_0",
+        cs = "cs_5_0",
+        outname = "dx11",
     },
     metal = {
         vs = "metal",
         fs = "metal",
         cs = "metal",
+        outname = "metal",
     },
     vulkan = {
         vs = "spirv",
         fs = "spirv",
         cs = "spirv",
+        outname = "spirv",
     },
-}
-
-local shader_types <const> = {
-    windows = "dx11",
-    ios = "metal",
-    macos = "metal",
-    linux = "vulkan",
-    android = "vulkan",
 }
 
 local function commandline(cfg)
@@ -108,15 +110,17 @@ end
 local m = {}
 local rule = {}
 
-local function set_rule(stage)
-    if rule[stage] then
+local function set_rule(stage, renderer)
+    local key = stage.."_"..renderer
+    if rule[key] then
         return
     end
-    rule[stage] = true
-    lm:rule ("compile_shader_"..stage) {
+    rule[key] = true
+    lm:rule ("compile_shader_"..key) {
         "$bin/shaderc",
         commandline {
             stage = stage,
+            renderer = renderer,
             includes = {
                 lm.BgfxDir / "src"
             }
@@ -127,20 +131,47 @@ local function set_rule(stage)
     }
 end
 
+local function get_renderer()
+    if lm.gl then
+        return "opengl"
+    end
+    if lm.vk then
+        return "vulkan"
+    end
+    if lm.noop then
+        return "noop"
+    end
+    if lm.d3d9 then
+        return "direct3d9"
+    end
+    if lm.d3d11 then
+        return "direct3d11"
+    end
+    if lm.d3d12 then
+        return "direct3d12"
+    end
+    if lm.mtl then
+        return "metal"
+    end
+    return renderers[platforms[lm.os]]
+end
+
 local function compile(fullpath)
     local _, stage, name = fullpath:match "^(.*)/([cfv]s)_([^/]+)%.sc$"
-    local target_name = ("shader-%s_%s"):format(stage, name)
+    local renderer = get_renderer()
+    local key = stage.."_"..renderer
+    local target_name = ("shader-%s_%s"):format(key, name)
     if m[target_name] then
         return target_name
     end
     m[target_name] = true
 
-    set_rule(stage)
+    set_rule(stage, renderer)
 
     lm:build (target_name) {
-        rule = "compile_shader_"..stage,
+        rule = "compile_shader_"..key,
         input = lm.BgfxDir / fullpath,
-        output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_types[lm.os], stage, name),
+        output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_options[renderer].outname, stage, name),
         deps = "shaderc",
     }
     return target_name
