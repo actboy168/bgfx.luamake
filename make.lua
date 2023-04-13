@@ -1,6 +1,7 @@
 local lm = require "luamake"
 local fs = require "bee.filesystem"
 
+lm:required_version "1.3"
 lm.compile_commands = "build"
 lm.mode = "debug"
 local plat = (function ()
@@ -14,7 +15,7 @@ local plat = (function ()
 end)()
 lm.builddir = ("build/%s/%s"):format(plat, lm.mode)
 
-if not pcall(require, "env") then
+if not lm.pcall(require, "env") then
     lm.BgfxDir = lm:path "./bgfx/"
     lm.BxDir = lm:path "./bx/"
     lm.BimgDir = lm:path "./bimg/"
