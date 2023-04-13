@@ -43,6 +43,12 @@ local shader_options <const> = {
         cs = "s_5_0",
         outname = "dx11",
     },
+    opengl = {
+        vs = "120",
+        fs = "120",
+        cs = "430",
+        outname = "glsl",
+    },
     metal = {
         vs = "metal",
         fs = "metal",
@@ -69,24 +75,24 @@ local function commandline(cfg)
         "--depends"
     }
     if cfg.varying_path then
-        commands[#commands+1] = "--varyingdef"
-        commands[#commands+1] = cfg.varying_path
+        commands[#commands + 1] = "--varyingdef"
+        commands[#commands + 1] = cfg.varying_path
     end
     if cfg.includes then
         for _, p in ipairs(cfg.includes) do
-            commands[#commands+1] = "-i"
-            commands[#commands+1] = p
+            commands[#commands + 1] = "-i"
+            commands[#commands + 1] = p
         end
     end
     if cfg.defines then
         local t = {}
         for _, m in ipairs(cfg.defines) do
-            t[#t+1] = m
+            t[#t + 1] = m
         end
         if #t > 0 then
             local defines = table.concat(t, ';')
-            commands[#commands+1] = "--define"
-            commands[#commands+1] = defines
+            commands[#commands + 1] = "--define"
+            commands[#commands + 1] = defines
         end
     end
     local level = cfg.optimizelevel
@@ -96,11 +102,11 @@ local function commandline(cfg)
         end
     end
     if cfg.debug then
-        commands[#commands+1] = "--debug"
+        commands[#commands + 1] = "--debug"
     else
         if level then
-            commands[#commands+1] = "-O"
-            commands[#commands+1] = tostring(level)
+            commands[#commands + 1] = "-O"
+            commands[#commands + 1] = tostring(level)
         end
     end
     return commands
@@ -110,12 +116,12 @@ local m = {}
 local rule = {}
 
 local function set_rule(stage, renderer)
-    local key = stage.."_"..renderer
+    local key = stage .. "_" .. renderer
     if rule[key] then
         return
     end
     rule[key] = true
-    lm:rule ("compile_shader_"..key) {
+    lm:rule("compile_shader_" .. key) {
         "$bin/shaderc",
         commandline {
             stage = stage,
@@ -158,7 +164,7 @@ end
 local function compile(fullpath)
     local _, stage, name = fullpath:match "^(.*)/([cfv]s)_([^/]+)%.sc$"
     local renderer = get_renderer()
-    local key = stage.."_"..renderer
+    local key = stage .. "_" .. renderer
     local target_name = ("shader-%s_%s"):format(key, name)
     if m[target_name] then
         return target_name
@@ -167,8 +173,8 @@ local function compile(fullpath)
 
     set_rule(stage, renderer)
 
-    lm:build (target_name) {
-        rule = "compile_shader_"..key,
+    lm:build(target_name) {
+        rule = "compile_shader_" .. key,
         input = lm.BgfxDir / fullpath,
         output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_options[renderer].outname, stage, name),
         deps = "shaderc",
@@ -178,11 +184,11 @@ end
 
 local function compileall(dir)
     local r = {}
-    local path = tostring(lm.BgfxDir.."/"..dir)
+    local path = tostring(lm.BgfxDir .. "/" .. dir)
     for file in fs.pairs(path) do
         local filename = file:filename():string()
         if filename:match "^[cfv]s_[^/]+%.sc$" then
-            r[#r+1] = compile(dir.."/"..filename)
+            r[#r + 1] = compile(dir .. "/" .. filename)
         end
     end
     return r
