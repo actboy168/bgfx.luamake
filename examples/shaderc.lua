@@ -27,21 +27,20 @@ local stage_types <const> = {
 
 local shader_options <const> = {
     direct3d9 = {
-        vs = "vs_5_0",
-        fs = "ps_5_0",
-        cs = "cs_5_0",
+        vs = "s_3_0",
+        fs = "s_3_0",
         outname = "dx9",
     },
     direct3d11 = {
-        vs = "vs_5_0",
-        fs = "ps_5_0",
-        cs = "cs_5_0",
+        vs = "s_5_0",
+        fs = "s_5_0",
+        cs = "s_5_0",
         outname = "dx11",
     },
     direct3d12 = {
-        vs = "vs_5_0",
-        fs = "ps_5_0",
-        cs = "cs_5_0",
+        vs = "s_5_0",
+        fs = "s_5_0",
+        cs = "s_5_0",
         outname = "dx11",
     },
     metal = {
