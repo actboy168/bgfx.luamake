@@ -27,6 +27,10 @@ require "core.bimg"
 require "core.bgfx"
 require "examples.common"
 
+--extra tools
+require "tools.texturev"
+require "tools.geometryv"
+
 lm:runlua "generator" {
     script = "examples/generator.lua",
     args = { lm.BgfxDir },
