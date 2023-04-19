@@ -31,6 +31,8 @@ require "examples.common"
 require "tools.texturev"
 require "tools.geometryv"
 
+require "test.bx"
+
 lm:runlua "generator" {
     script = "examples/generator.lua",
     args = { lm.BgfxDir },
