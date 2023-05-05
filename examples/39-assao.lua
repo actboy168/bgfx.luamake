@@ -3,7 +3,15 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
-lm:exe '39-assao' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '39-assao' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -40,7 +48,7 @@ lm:exe '39-assao' {
         geometryc.compile 'examples/assets/meshes/tree.obj',
         texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

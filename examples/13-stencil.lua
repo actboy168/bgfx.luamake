@@ -3,7 +3,15 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
-lm:exe '13-stencil' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '13-stencil' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -23,7 +31,7 @@ lm:exe '13-stencil' {
         texturec.compile 'examples/runtime/textures/figure-rgba.dds',
         texturec.compile 'examples/runtime/textures/flare.dds',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

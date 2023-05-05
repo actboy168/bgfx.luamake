@@ -1,7 +1,15 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
-lm:exe '38-bloom' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '38-bloom' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -13,7 +21,7 @@ lm:exe '38-bloom' {
         shaderc.compile 'examples/38-bloom/vs_deferred_combine.sc',
         shaderc.compile 'examples/38-bloom/vs_fullscreen.sc',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

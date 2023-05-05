@@ -27,11 +27,13 @@ require "core.bimg"
 require "core.bgfx"
 require "examples.common"
 
---extra tools
-require "tools.texturev"
-require "tools.geometryv"
+if  lm.os ~= "ios" and lm.os ~= "android" then
+    --extra tools
+    require "tools.texturev"
+    require "tools.geometryv"
 
-require "test.bx"
+    require "test.bx"
+end
 
 lm:runlua "generator" {
     script = "examples/generator.lua",

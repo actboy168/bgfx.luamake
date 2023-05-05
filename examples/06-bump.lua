@@ -2,7 +2,15 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
-lm:exe '06-bump' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '06-bump' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -12,7 +20,7 @@ lm:exe '06-bump' {
         texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
         texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

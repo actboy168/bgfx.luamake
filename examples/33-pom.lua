@@ -2,7 +2,15 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
-lm:exe '33-pom' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '33-pom' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -12,7 +20,7 @@ lm:exe '33-pom' {
         texturec.compile 'examples/runtime/textures/parallax-h.ktx',
         texturec.compile 'examples/runtime/textures/parallax-n.ktx',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

@@ -1,7 +1,15 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
-lm:exe '24-nbody' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '24-nbody' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -11,7 +19,7 @@ lm:exe '24-nbody' {
         shaderc.compile 'examples/24-nbody/fs_particle.sc',
         shaderc.compile 'examples/24-nbody/vs_particle.sc',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

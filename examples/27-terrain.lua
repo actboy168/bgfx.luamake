@@ -1,7 +1,15 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
-lm:exe '27-terrain' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '27-terrain' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -9,7 +17,7 @@ lm:exe '27-terrain' {
         shaderc.compile 'examples/27-terrain/vs_terrain.sc',
         shaderc.compile 'examples/27-terrain/vs_terrain_height_texture.sc',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

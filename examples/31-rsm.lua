@@ -3,7 +3,15 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local copy = require 'examples.copyfile'
 
-lm:exe '31-rsm' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '31-rsm' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -24,7 +32,7 @@ lm:exe '31-rsm' {
         geometryc.compile 'examples/assets/meshes/tree.obj',
         copy.compile 'examples/runtime/meshes/unit_sphere.bin',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

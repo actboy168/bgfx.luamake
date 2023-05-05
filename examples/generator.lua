@@ -92,7 +92,15 @@ local function generator(name)
         write "local copy = require 'examples.copyfile'"
     end
     write ""
-    write "lm:exe '${NAME}' {"
+    write "local function example_target(name)"
+    write "    if lm.os == 'android' then"
+    write "        return lm:dll(name)"
+    write "    else"
+    write "        return lm:exe(name)"
+    write "    end"
+    write "end"
+    write ""
+    write "example_target '${NAME}' {"
     write "    rootdir = lm.BgfxDir,"
     write "    deps = {"
     write "        'example-runtime',"
@@ -113,7 +121,7 @@ local function generator(name)
         write(("        copy.compile 'examples/runtime/%s',"):format(copyfile))
     end
     write "    },"
-    write "    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',"
+    write "    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',"
     write "    includes = {"
     write "        lm.BxDir / 'include',"
     write "        lm.BimgDir / 'include',"

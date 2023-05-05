@@ -1,5 +1,6 @@
 local lm = require "luamake"
 local fs = require "bee.filesystem"
+local SHADERC = require "examples.tools_path" ("shaderc")
 
 require "tools.shaderc"
 
@@ -122,7 +123,7 @@ local function set_rule(stage, renderer)
     end
     rule[key] = true
     lm:rule("compile_shader_" .. key) {
-        "$bin/shaderc",
+        SHADERC,
         commandline {
             stage = stage,
             renderer = renderer,

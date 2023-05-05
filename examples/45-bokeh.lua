@@ -3,7 +3,15 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
-lm:exe '45-bokeh' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '45-bokeh' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -24,7 +32,7 @@ lm:exe '45-bokeh' {
         texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
         texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

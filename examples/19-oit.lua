@@ -1,7 +1,15 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
-lm:exe '19-oit' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '19-oit' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -13,7 +21,7 @@ lm:exe '19-oit' {
         shaderc.compile 'examples/19-oit/vs_oit.sc',
         shaderc.compile 'examples/19-oit/vs_oit_blit.sc',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

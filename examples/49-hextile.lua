@@ -2,7 +2,15 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
-lm:exe '49-hextile' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '49-hextile' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -10,7 +18,7 @@ lm:exe '49-hextile' {
         shaderc.compile 'examples/49-hextile/vs_hextile.sc',
         texturec.compile 'examples/runtime/textures/aerial_rocks_04_diff_2k.ktx',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

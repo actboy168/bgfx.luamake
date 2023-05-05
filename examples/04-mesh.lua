@@ -2,7 +2,15 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 
-lm:exe '04-mesh' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '04-mesh' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -10,7 +18,7 @@ lm:exe '04-mesh' {
         shaderc.compile 'examples/04-mesh/vs_mesh.sc',
         geometryc.compile 'examples/assets/meshes/bunny.obj',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

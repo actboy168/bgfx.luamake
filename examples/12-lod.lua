@@ -3,7 +3,15 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
-lm:exe '12-lod' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '12-lod' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -18,7 +26,7 @@ lm:exe '12-lod' {
         texturec.compile 'examples/runtime/textures/bark1.dds',
         texturec.compile 'examples/runtime/textures/leafs1.dds',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

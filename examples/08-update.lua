@@ -2,7 +2,15 @@ local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 local texturec = require 'examples.texturec'
 
-lm:exe '08-update' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '08-update' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -36,7 +44,7 @@ lm:exe '08-update' {
         texturec.compile 'examples/runtime/textures/texture_compression_ptc24.pvr',
         texturec.compile 'examples/runtime/textures/texture_compression_ptc24.pvr',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

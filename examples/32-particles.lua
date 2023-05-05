@@ -1,13 +1,21 @@
 local lm = require 'luamake'
 local texturec = require 'examples.texturec'
 
-lm:exe '32-particles' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '32-particles' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         texturec.compile 'examples/runtime/textures/particle.ktx',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

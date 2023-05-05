@@ -1,14 +1,22 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
-lm:exe '07-callback' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '07-callback' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/07-callback/fs_callback.sc',
         shaderc.compile 'examples/07-callback/vs_callback.sc',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

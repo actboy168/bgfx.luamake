@@ -3,7 +3,15 @@ local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
 
-lm:exe '18-ibl' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '18-ibl' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
@@ -18,7 +26,7 @@ lm:exe '18-ibl' {
         texturec.compile 'examples/runtime/textures/kyoto_irr.dds',
         texturec.compile 'examples/runtime/textures/kyoto_lod.dds',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

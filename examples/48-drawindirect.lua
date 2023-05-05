@@ -1,14 +1,22 @@
 local lm = require 'luamake'
 local shaderc = require 'examples.shaderc'
 
-lm:exe '48-drawindirect' {
+local function example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+example_target '48-drawindirect' {
     rootdir = lm.BgfxDir,
     deps = {
         'example-runtime',
         shaderc.compile 'examples/48-drawindirect/cs_drawindirect.sc',
         shaderc.compile 'examples/48-drawindirect/cs_drawindirect_count.sc',
     },
-    defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
+    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

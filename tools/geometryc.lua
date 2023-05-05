@@ -1,5 +1,10 @@
 local lm = require "luamake"
 
+if lm.os == "ios" or lm.os == "android" then
+    lm:phony "geometryc" {}
+    return
+end
+
 require "utf8.support-utf8"
 
 lm:exe "geometryc" {

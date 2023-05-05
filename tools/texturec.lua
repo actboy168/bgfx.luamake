@@ -1,5 +1,10 @@
 local lm = require "luamake"
 
+if lm.os == "ios" or lm.os == "android" then
+    lm:phony "texturec" {}
+    return
+end
+
 require "utf8.support-utf8"
 
 lm:exe "texturec" {
