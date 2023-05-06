@@ -74,6 +74,8 @@ lm:source_set "example-runtime" {
             "android",
             "log",
             "m",
+            "EGL",
+            "GLESv2",
         }
     },
 }
