@@ -13,6 +13,9 @@ local tools_dir = (function ()
 end)()
 
 function m.tools_path(name)
+    if lm.hostos == "windows" then
+        return tools_dir..name..".exe"
+    end
     return tools_dir..name
 end
 

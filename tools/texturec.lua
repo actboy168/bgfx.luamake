@@ -1,7 +1,9 @@
 local lm = require "luamake"
 
 if lm.os == "ios" or lm.os == "android" then
-    lm:phony "texturec" {}
+    lm:phony "texturec" {
+        input = require "examples.util".tools_path ("texturec")
+    }
     return
 end
 

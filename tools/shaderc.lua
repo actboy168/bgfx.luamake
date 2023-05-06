@@ -1,7 +1,9 @@
 local lm = require "luamake"
 
 if lm.os == "ios" or lm.os == "android" then
-    lm:phony "shaderc" {}
+    lm:phony "shaderc" {
+        input = require "examples.util".tools_path ("shaderc")
+    }
     return
 end
 
