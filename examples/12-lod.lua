@@ -19,7 +19,6 @@ example_target '12-lod' {
         texturec.compile 'examples/runtime/textures/bark1.dds',
         texturec.compile 'examples/runtime/textures/leafs1.dds',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

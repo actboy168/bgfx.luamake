@@ -9,7 +9,6 @@ example_target '01-cubes' {
         shaderc.compile 'examples/01-cubes/fs_cubes.sc',
         shaderc.compile 'examples/01-cubes/vs_cubes.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

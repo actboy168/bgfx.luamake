@@ -12,7 +12,6 @@ example_target '40-svt' {
         shaderc.compile 'examples/40-svt/vs_vt_generic.sc',
         texturec.compile 'examples/runtime/textures/8k_mars.jpg',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

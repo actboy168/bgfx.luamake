@@ -17,7 +17,6 @@ example_target '10-font' {
         copy.compile 'examples/runtime/font/signika-regular.ttf',
         copy.compile 'examples/runtime/font/visitor1.ttf',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

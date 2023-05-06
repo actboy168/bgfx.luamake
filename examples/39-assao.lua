@@ -41,7 +41,6 @@ example_target '39-assao' {
         geometryc.compile 'examples/assets/meshes/tree.obj',
         texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

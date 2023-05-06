@@ -9,7 +9,6 @@ example_target '07-callback' {
         shaderc.compile 'examples/07-callback/fs_callback.sc',
         shaderc.compile 'examples/07-callback/vs_callback.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

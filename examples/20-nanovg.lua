@@ -12,7 +12,6 @@ example_target '20-nanovg' {
         copy.compile 'examples/runtime/font/roboto-bold.ttf',
         copy.compile 'examples/runtime/font/roboto-regular.ttf',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

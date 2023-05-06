@@ -16,7 +16,6 @@ example_target '41-tess' {
         shaderc.compile 'examples/41-tess/vs_terrain_render.sc',
         texturec.compile 'examples/runtime/textures/dmap.png',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

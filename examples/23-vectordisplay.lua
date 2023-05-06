@@ -11,7 +11,6 @@ example_target '23-vectordisplay' {
         shaderc.compile 'examples/23-vectordisplay/fs_vectordisplay_fb.sc',
         shaderc.compile 'examples/23-vectordisplay/vs_vectordisplay_fb.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

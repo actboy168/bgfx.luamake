@@ -16,7 +16,6 @@ example_target '36-sky' {
         geometryc.compile 'examples/assets/sky/test_scene.obj',
         texturec.compile 'examples/runtime/textures/lightmap.ktx',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

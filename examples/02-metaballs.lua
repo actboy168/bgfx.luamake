@@ -6,7 +6,6 @@ example_target '02-metaballs' {
     deps = {
         'example-runtime',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

@@ -25,7 +25,6 @@ example_target '31-rsm' {
         geometryc.compile 'examples/assets/meshes/tree.obj',
         copy.compile 'examples/runtime/meshes/unit_sphere.bin',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

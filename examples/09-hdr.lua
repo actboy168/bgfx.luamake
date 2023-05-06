@@ -25,7 +25,6 @@ example_target '09-hdr' {
         geometryc.compile 'examples/assets/meshes/bunny.obj',
         texturec.compile 'examples/runtime/textures/uffizi.ktx',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

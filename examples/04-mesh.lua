@@ -11,7 +11,6 @@ example_target '04-mesh' {
         shaderc.compile 'examples/04-mesh/vs_mesh.sc',
         geometryc.compile 'examples/assets/meshes/bunny.obj',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

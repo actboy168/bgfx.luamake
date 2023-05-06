@@ -9,7 +9,6 @@ example_target '05-instancing' {
         shaderc.compile 'examples/05-instancing/fs_instancing.sc',
         shaderc.compile 'examples/05-instancing/vs_instancing.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

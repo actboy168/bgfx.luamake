@@ -9,7 +9,6 @@ example_target '11-fontsdf' {
         copy.compile 'examples/runtime/font/special_elite.ttf',
         copy.compile 'examples/runtime/text/sherlock_holmes_a_scandal_in_bohemia_arthur_conan_doyle.txt',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

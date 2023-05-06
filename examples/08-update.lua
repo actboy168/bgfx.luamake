@@ -37,7 +37,6 @@ example_target '08-update' {
         texturec.compile 'examples/runtime/textures/texture_compression_ptc24.pvr',
         texturec.compile 'examples/runtime/textures/texture_compression_ptc24.pvr',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

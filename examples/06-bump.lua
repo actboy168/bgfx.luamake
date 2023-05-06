@@ -13,7 +13,6 @@ example_target '06-bump' {
         texturec.compile 'examples/runtime/textures/fieldstone-n.dds',
         texturec.compile 'examples/runtime/textures/fieldstone-rgba.dds',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

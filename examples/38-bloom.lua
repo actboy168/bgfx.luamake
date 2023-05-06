@@ -14,7 +14,6 @@ example_target '38-bloom' {
         shaderc.compile 'examples/38-bloom/vs_deferred_combine.sc',
         shaderc.compile 'examples/38-bloom/vs_fullscreen.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

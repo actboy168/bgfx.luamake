@@ -19,7 +19,6 @@ example_target '18-ibl' {
         texturec.compile 'examples/runtime/textures/kyoto_irr.dds',
         texturec.compile 'examples/runtime/textures/kyoto_lod.dds',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

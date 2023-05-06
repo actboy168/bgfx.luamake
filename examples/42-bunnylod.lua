@@ -11,7 +11,6 @@ example_target '42-bunnylod' {
         shaderc.compile 'examples/42-bunnylod/vs_bunnylod.sc',
         geometryc.compile 'examples/assets/meshes/bunny_patched.obj',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

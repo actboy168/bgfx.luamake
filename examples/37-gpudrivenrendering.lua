@@ -14,7 +14,6 @@ example_target '37-gpudrivenrendering' {
         shaderc.compile 'examples/37-gpudrivenrendering/vs_gdr_instanced_indirect_rendering.sc',
         shaderc.compile 'examples/37-gpudrivenrendering/vs_gdr_render_occlusion.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

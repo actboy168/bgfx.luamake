@@ -9,7 +9,6 @@ example_target '03-raymarch' {
         shaderc.compile 'examples/03-raymarch/fs_raymarching.sc',
         shaderc.compile 'examples/03-raymarch/vs_raymarching.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

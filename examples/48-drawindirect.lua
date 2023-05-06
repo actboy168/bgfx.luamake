@@ -9,7 +9,6 @@ example_target '48-drawindirect' {
         shaderc.compile 'examples/48-drawindirect/cs_drawindirect.sc',
         shaderc.compile 'examples/48-drawindirect/cs_drawindirect_count.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

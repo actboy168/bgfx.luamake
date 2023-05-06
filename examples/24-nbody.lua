@@ -12,7 +12,6 @@ example_target '24-nbody' {
         shaderc.compile 'examples/24-nbody/fs_particle.sc',
         shaderc.compile 'examples/24-nbody/vs_particle.sc',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

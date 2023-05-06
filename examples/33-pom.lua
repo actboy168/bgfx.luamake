@@ -13,7 +13,6 @@ example_target '33-pom' {
         texturec.compile 'examples/runtime/textures/parallax-h.ktx',
         texturec.compile 'examples/runtime/textures/parallax-n.ktx',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',

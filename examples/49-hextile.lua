@@ -11,7 +11,6 @@ example_target '49-hextile' {
         shaderc.compile 'examples/49-hextile/vs_hextile.sc',
         texturec.compile 'examples/runtime/textures/aerial_rocks_04_diff_2k.ktx',
     },
-    defines = lm.os ~= 'android' and 'ENTRY_CONFIG_IMPLEMENT_MAIN=1',
     includes = {
         lm.BxDir / 'include',
         lm.BimgDir / 'include',
