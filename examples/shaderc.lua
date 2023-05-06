@@ -1,6 +1,6 @@
 local lm = require "luamake"
 local fs = require "bee.filesystem"
-local SHADERC = require "examples.tools_path" ("shaderc")
+local SHADERC = require "examples.util".tools_path ("shaderc")
 
 require "tools.shaderc"
 

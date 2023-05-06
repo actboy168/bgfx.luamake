@@ -1,6 +1,6 @@
 local lm = require "luamake"
 
-local GEOMETRYC = require "examples.tools_path" ("geometryc")
+local GEOMETRYC = require "examples.util".tools_path ("geometryc")
 
 require "tools.geometryc"
 

@@ -1,14 +1,7 @@
 local lm = require 'luamake'
+local example_target = require 'examples.util'.example_target
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
-
-local function example_target(name)
-    if lm.os == 'android' then
-        return lm:dll(name)
-    else
-        return lm:exe(name)
-    end
-end
 
 example_target '15-shadowmaps-simple' {
     rootdir = lm.BgfxDir,

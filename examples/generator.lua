@@ -79,6 +79,7 @@ local function generator(name)
     table.sort(copyfiles)
 
     write "local lm = require 'luamake'"
+    write "local example_target = require 'examples.util'.example_target"
     if #shaders > 0 then
         write "local shaderc = require 'examples.shaderc'"
     end
@@ -91,14 +92,6 @@ local function generator(name)
     if #copyfiles > 0 then
         write "local copy = require 'examples.copyfile'"
     end
-    write ""
-    write "local function example_target(name)"
-    write "    if lm.os == 'android' then"
-    write "        return lm:dll(name)"
-    write "    else"
-    write "        return lm:exe(name)"
-    write "    end"
-    write "end"
     write ""
     write "example_target '${NAME}' {"
     write "    rootdir = lm.BgfxDir,"

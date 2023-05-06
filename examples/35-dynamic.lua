@@ -1,12 +1,5 @@
 local lm = require 'luamake'
-
-local function example_target(name)
-    if lm.os == 'android' then
-        return lm:dll(name)
-    else
-        return lm:exe(name)
-    end
-end
+local example_target = require 'examples.util'.example_target
 
 example_target '35-dynamic' {
     rootdir = lm.BgfxDir,

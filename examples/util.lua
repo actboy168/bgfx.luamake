@@ -1,6 +1,8 @@
 local lm = require "luamake"
 
-local tools_path = (function ()
+local m = {}
+
+local tools_dir = (function ()
     if lm.hostos == lm.os then
         return "$bin/"
     end
@@ -10,6 +12,16 @@ local tools_path = (function ()
     return ("build/%s/%s/bin/"):format(lm.hostos, lm.mode)
 end)()
 
-return function (name)
-    return tools_path..name
+function m.tools_path(name)
+    return tools_dir..name
 end
+
+function m.example_target(name)
+    if lm.os == 'android' then
+        return lm:dll(name)
+    else
+        return lm:exe(name)
+    end
+end
+
+return m

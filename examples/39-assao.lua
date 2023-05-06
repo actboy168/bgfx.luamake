@@ -1,15 +1,8 @@
 local lm = require 'luamake'
+local example_target = require 'examples.util'.example_target
 local shaderc = require 'examples.shaderc'
 local geometryc = require 'examples.geometryc'
 local texturec = require 'examples.texturec'
-
-local function example_target(name)
-    if lm.os == 'android' then
-        return lm:dll(name)
-    else
-        return lm:exe(name)
-    end
-end
 
 example_target '39-assao' {
     rootdir = lm.BgfxDir,
