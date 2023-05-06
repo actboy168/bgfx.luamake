@@ -30,6 +30,7 @@ function m.example_target(name)
         if use_main then
             t.defines = 'ENTRY_CONFIG_IMPLEMENT_MAIN=1'
         else
+            t.basename = "lib"..name
             if name ~= "25-c99" then
                 if t.deps then
                     table.insert(t.deps, "dummy_main")
