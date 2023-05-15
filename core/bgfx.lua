@@ -1,5 +1,7 @@
 local lm = require "luamake"
 
+require "core.embedded_shader.compile"
+
 local function deepcopy(t)
     local r = {}
     for k, v in pairs(t) do
