@@ -70,5 +70,5 @@ end
 
 lm:phony "embedded_shader" {
     input = inputs,
-    --output = lm.BgfxDir / "src"/ "bgfx.cpp",
+    output = lm.BgfxDir / "src"/ "bgfx.cpp",
 }

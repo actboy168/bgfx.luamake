@@ -1,6 +1,6 @@
 local lm = require "luamake"
 
-require "core.embedded_shader.compile"
+--require "core.embedded_shader.compile"
 
 local function deepcopy(t)
     local r = {}
