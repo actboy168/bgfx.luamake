@@ -1,6 +1,6 @@
 local lm = require "luamake"
 
-lm.cxx = "c++17"
+lm.cxx = "c++20"
 
 lm.defines = "BX_CONFIG_DEBUG=" .. (lm.mode == "debug" and 1 or 0)
 
