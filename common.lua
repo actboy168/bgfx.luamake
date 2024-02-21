@@ -7,7 +7,6 @@ lm.defines = "BX_CONFIG_DEBUG=" .. (lm.mode == "debug" and 1 or 0)
 lm.msvc = {
     defines = {
         "_CRT_SECURE_NO_WARNINGS",
-        lm.mode == "debug" and "_DISABLE_STRING_ANNOTATION",
     },
     includes = lm.BxDir / "include/compat/msvc",
 }
