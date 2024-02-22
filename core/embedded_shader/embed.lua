@@ -45,7 +45,6 @@ local shaders <const> = {
     "glsl",
     "essl",
     "spv",
-    "dx9",
     "dx11",
     "mtl",
 }

@@ -27,11 +27,6 @@ local stage_types <const> = {
 }
 
 local shader_options <const> = {
-    direct3d9 = {
-        vs = "s_3_0",
-        fs = "s_3_0",
-        outname = "dx9",
-    },
     direct3d11 = {
         vs = "s_5_0",
         fs = "s_5_0",
@@ -146,9 +141,6 @@ local function get_renderer()
     end
     if lm.noop then
         return "noop"
-    end
-    if lm.d3d9 then
-        return "direct3d9"
     end
     if lm.d3d11 then
         return "direct3d11"

@@ -5,9 +5,8 @@ require "tools.shaderc"
 
 local shader_target <const> = {
     { type = "glsl", args = { "--platform", "linux", "-p", "120" } },
-    { type = "essl", args = { "--platform", "android" } },
+    { type = "essl", args = { "--platform", "android", "-p", "100_es" } },
     { type = "spv",  args = { "--platform", "linux", "-p", "spirv" } },
-    { type = "dx9",  args = { "--platform", "windows", "-p", "s_3_0", "-O", "3" } },
     { type = "dx11", args = { "--platform", "windows", "-p", "s_4_0", "-O", "3" } },
     { type = "mtl",  args = { "--platform", "ios", "-p", "metal", "-O", "3" } },
 }
