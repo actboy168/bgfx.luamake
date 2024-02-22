@@ -1,5 +1,8 @@
 name: build
-on: push
+on:
+  push:
+  schedule:
+    - cron: '0 10 * * *'
 jobs:
   compile:
     runs-on: ${{ matrix.os }}
