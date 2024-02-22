@@ -22,4 +22,5 @@ jobs:
         repository: bkaradzic/bgfx
         path: ./bgfx
     - uses: actboy168/setup-luamake@master
+    - run: luamake generator
     - run: luamake
