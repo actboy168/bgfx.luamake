@@ -26,6 +26,7 @@ lm.macos = {
 lm.ios = {
     includes = lm.BxDir / "include/compat/ios",
     flags = {
+        "-fno-objc-arc",
         "-fembed-bitcode",
         "-Wno-unused-function"
     }
