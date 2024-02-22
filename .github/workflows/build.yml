@@ -6,18 +6,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest,ubuntu-latest,macos-latest]
+        os: [windows-latest,ubuntu-latest,macos-14]
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         repository: bkaradzic/bx
         path: ./bx
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         repository: bkaradzic/bimg
         path: ./bimg
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         repository: bkaradzic/bgfx
         path: ./bgfx
