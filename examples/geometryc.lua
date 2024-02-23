@@ -57,8 +57,8 @@ local function compile(fullpath)
     set_rule(rulename)
     lm:build (target_name) {
         rule = rulename,
-        input = lm.BgfxDir / fullpath,
-        output = ("$bin/meshes/%s.bin"):format(name),
+        inputs = lm.BgfxDir / fullpath,
+        outputs = ("$bin/meshes/%s.bin"):format(name),
         deps = "geometryc",
     }
     return target_name

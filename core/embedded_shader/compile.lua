@@ -61,8 +61,8 @@ for _, name in ipairs(shader_file) do
     lm:runlua {
         script = "core/embedded_shader/embed.lua",
         args = { "$out", "$in" },
-        input = binfiles,
-        output = output,
+        inputs = binfiles,
+        outputs = output,
     }
     inputs[#inputs+1] = output
 end

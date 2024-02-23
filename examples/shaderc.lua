@@ -162,8 +162,8 @@ local function compile(fullpath)
 
     lm:build(target_name) {
         rule = "compile_shader_" .. key,
-        input = lm.BgfxDir / fullpath,
-        output = ("$bin/shaders/%s/%s_%s.bin"):format(shader_options[renderer].outname, stage, name),
+        inputs = lm.BgfxDir / fullpath,
+        outputs = ("$bin/shaders/%s/%s_%s.bin"):format(shader_options[renderer].outname, stage, name),
         deps = "shaderc",
     }
     return target_name
