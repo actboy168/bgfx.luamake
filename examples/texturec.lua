@@ -13,8 +13,8 @@ local function compile(fullpath)
     end
     m[target_name] = true
     lm:copy (target_name) {
-        input = lm.BgfxDir / fullpath,
-        output = ("$bin/textures/%s"):format(name),
+        inputs = lm.BgfxDir / fullpath,
+        outputs = ("$bin/textures/%s"):format(name),
     }
     return target_name
 end

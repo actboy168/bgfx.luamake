@@ -10,8 +10,8 @@ local function compile(fullpath)
     end
     m[target_name] = true
     lm:copy (target_name) {
-        input = lm.BgfxDir / fullpath,
-        output = ("$bin/%s/%s"):format(dir, name),
+        inputs = lm.BgfxDir / fullpath,
+        outputs = ("$bin/%s/%s"):format(dir, name),
     }
     return target_name
 end

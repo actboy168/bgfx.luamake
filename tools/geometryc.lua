@@ -2,7 +2,7 @@ local lm = require "luamake"
 
 if lm.os == "ios" or lm.os == "android" then
     lm:phony "geometryc" {
-        input = require "examples.util".tools_path ("geometryc")
+        inputs = require "examples.util".tools_path ("geometryc")
     }
     return
 end

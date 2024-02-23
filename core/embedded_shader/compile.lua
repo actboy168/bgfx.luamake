@@ -68,6 +68,6 @@ for _, name in ipairs(shader_file) do
 end
 
 lm:phony "embedded_shader" {
-    input = inputs,
-    output = lm.BgfxDir / "src"/ "bgfx.cpp",
+    inputs = inputs,
+    outputs = lm.BgfxDir / "src"/ "bgfx.cpp",
 }
