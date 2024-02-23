@@ -51,8 +51,8 @@ for _, name in ipairs(shader_file) do
         binfiles[#binfiles+1] = binfile
         lm:build {
             rule = "compile_shader_"..shader_type.."_"..v.type,
-            input = lm.BgfxDir / "src" / (name..".sc"),
-            output = binfile,
+            inputs = lm.BgfxDir / "src" / (name..".sc"),
+            outputs = binfile,
             deps = "shaderc",
         }
     end
