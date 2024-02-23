@@ -91,18 +91,11 @@ local function commandline(cfg)
             commands[#commands + 1] = defines
         end
     end
-    local level = cfg.optimizelevel
-    if not level then
-        if renderer:match("direct3d") then
-            level = cfg.stage == "cs" and 1 or 3
-        end
-    end
     if cfg.debug then
         commands[#commands + 1] = "--debug"
     else
-        if level then
-            commands[#commands + 1] = "-O"
-            commands[#commands + 1] = tostring(level)
+        if renderer:match("direct3d") then
+            commands[#commands + 1] = "-O3"
         end
     end
     return commands
@@ -124,7 +117,8 @@ local function set_rule(stage, renderer)
             renderer = renderer,
             includes = {
                 lm.BgfxDir / "src"
-            }
+            },
+            debug = (lm.mode == "debug"),
         },
         description = "Compile shader $in",
         deps = "gcc",
