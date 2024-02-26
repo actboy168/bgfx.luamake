@@ -10,6 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest,ubuntu-latest,macos-14]
+        mode: [debug, release]
     steps:
     - uses: actions/checkout@v4
     - uses: actions/checkout@v4
@@ -26,4 +27,4 @@ jobs:
         path: ./bgfx
     - uses: actboy168/setup-luamake@master
     - run: luamake generator
-    - run: luamake
+    - run: luamake -mode ${{ matrix.mode }}
