@@ -111,7 +111,7 @@ local function set_rule(stage, renderer)
     end
     rule[key] = true
     lm:rule("compile_shader_" .. key) {
-        SHADERC,
+        args = { SHADERC,
         commandline {
             stage = stage,
             renderer = renderer,
@@ -119,7 +119,7 @@ local function set_rule(stage, renderer)
                 lm.BgfxDir / "src"
             },
             debug = (lm.mode == "debug"),
-        },
+        } },
         description = "Compile shader $in",
         deps = "gcc",
         depfile = "$out.d",

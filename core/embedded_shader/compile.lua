@@ -13,15 +13,15 @@ local shader_target <const> = {
 
 for _, v in ipairs(shader_target) do
     lm:rule("compile_shader_fs_"..v.type) {
-        SHADERC, "--type", "f", "-f", "$in", "-o", "$out",
-        v.args,
+        args = { SHADERC, "--type", "f", "-f", "$in", "-o", "$out",
+        v.args },
         description = "Compile "..v.type.." shader $in",
         deps = "gcc",
         depfile = "$out.d",
     }
     lm:rule("compile_shader_vs_"..v.type) {
-        SHADERC, "--type", "v", "-f", "$in", "-o", "$out",
-        v.args,
+        args = { SHADERC, "--type", "v", "-f", "$in", "-o", "$out",
+        v.args },
         description = "Compile "..v.type.." shader $in",
         deps = "gcc",
         depfile = "$out.d",
