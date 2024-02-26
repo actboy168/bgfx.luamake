@@ -38,10 +38,13 @@ local function set_rule(rulename)
     end
     rule[rulename] = true
     lm:rule (rulename) {
-        args = { GEOMETRYC,
-        "-f", "$in","-o", "$out",
-        "--packnormal", "1" },
-        geometryc_args[rulename],
+        args = {
+            GEOMETRYC,
+            "-f", "$in",
+            "-o", "$out",
+            "--packnormal", "1",
+            geometryc_args[rulename],
+        },
         description = "Convert geometry $in"
     }
 end
