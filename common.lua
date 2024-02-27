@@ -1,52 +1,43 @@
 local lm = require "luamake"
 
-lm.cxx = "c++20"
-
-lm.defines = "BX_CONFIG_DEBUG=" .. (lm.mode == "debug" and 1 or 0)
-
-lm.msvc = {
-    defines = {
-        "_CRT_SECURE_NO_WARNINGS",
+lm:conf {
+    cxx = "c++20",
+    defines = "BX_CONFIG_DEBUG=" .. (lm.mode == "debug" and 1 or 0),
+    msvc = {
+        defines = {
+            "_CRT_SECURE_NO_WARNINGS",
+        },
+        includes = lm.BxDir / "include/compat/msvc",
     },
-    includes = lm.BxDir / "include/compat/msvc",
-}
-
-lm.mingw = {
-    includes = lm.BxDir / "include/compat/mingw",
-}
-
-lm.linux  = {
-    flags = "-fPIC"
-}
-
-lm.macos = {
-    includes = lm.BxDir / "include/compat/osx",
-}
-
-lm.ios = {
-    includes = lm.BxDir / "include/compat/ios",
-    flags = {
-        "-fno-objc-arc",
-        "-fembed-bitcode",
-        "-Wno-unused-function"
-    }
-}
-
-lm.android  = {
-    flags = "-fPIC",
-}
-
-if lm.os == "android" then
-    lm.arch = "aarch64"
-    lm.vendor = "linux"
-    lm.sys = "android33"
-end
-
-lm.clang = {
-    flags = {
-        "-Wno-unknown-warning-option",
-        "-Wno-tautological-constant-compare",
-        "-Wno-unused-variable",
-        "-Wno-unused-but-set-variable"
-    }
+    mingw = {
+        includes = lm.BxDir / "include/compat/mingw",
+    },
+    linux  = {
+        flags = "-fPIC"
+    },
+    macos = {
+        includes = lm.BxDir / "include/compat/osx",
+    },
+    ios = {
+        includes = lm.BxDir / "include/compat/ios",
+        flags = {
+            "-fno-objc-arc",
+            "-fembed-bitcode",
+            "-Wno-unused-function"
+        }
+    },
+    android  = {
+        flags = "-fPIC",
+        arch = "aarch64",
+        vendor = "linux",
+        sys = "android33",
+    },
+    clang = {
+        flags = {
+            "-Wno-unknown-warning-option",
+            "-Wno-tautological-constant-compare",
+            "-Wno-unused-variable",
+            "-Wno-unused-but-set-variable"
+        }
+    },
 }
