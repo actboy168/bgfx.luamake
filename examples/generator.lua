@@ -24,7 +24,7 @@ local function generator(name)
 
     for file in fs.pairs(projectdir) do
         local filename = file:filename():string()
-        local ext = file:extension():string():lower()
+        local ext = file:extension()
         if ext == ".c" then
             c_sources[#c_sources+1] = filename
         elseif ext == ".cpp" then
