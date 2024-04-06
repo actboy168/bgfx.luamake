@@ -11,16 +11,9 @@ fs.create_directories(cwd / "temp")
 local process = assert(subprocess.spawn {
     fs.absolute(testfile..EXE), table.unpack(arg, 2),
     cwd = cwd,
-    stdout = true,
+    stdout = io.stdout,
     stderr = "stdout",
 })
-
-for line in process.stdout:lines() do
-    io.write(line, "\n")
-    io.flush()
-end
-process.stdout:close()
-
 local code = process:wait()
 if code ~= 0 then
     os.exit(code, true)
