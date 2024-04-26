@@ -116,7 +116,7 @@ local function set_rule(stage, renderer)
             stage = stage,
             renderer = renderer,
             includes = {
-                lm.BgfxDir / "src"
+                lm.BgfxDir .. "/src"
             },
             debug = (lm.mode == "debug"),
         } },

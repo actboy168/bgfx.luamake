@@ -18,8 +18,8 @@ lm:exe "texturec" {
         "bx",
     },
     includes = {
-        lm.BxDir / "include",
-        lm.BgfxDir / "include",
+        lm.BxDir .. "/include",
+        lm.BgfxDir .. "/include",
         "include",
         "3rdparty/iqa/include"
     },

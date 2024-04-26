@@ -1,7 +1,7 @@
 local lm = require "luamake"
 
 lm:source_set "astc-encoder" {
-    rootdir = lm.BimgDir / "3rdparty/astc-encoder",
+    rootdir = lm.BimgDir .. "/3rdparty/astc-encoder",
     includes = {
         ".",
         "include"
@@ -15,7 +15,7 @@ lm:source_set "bimg" {
     rootdir = lm.BimgDir,
     deps = "astc-encoder",
     includes = {
-        lm.BxDir / "include",
+        lm.BxDir .. "/include",
         "include",
         "3rdparty/astc-encoder/include"
     },
@@ -48,7 +48,7 @@ lm:source_set "bimg-decode" {
     rootdir = lm.BimgDir,
     deps = "bimg-miniz",
     includes = {
-        lm.BxDir / "include",
+        lm.BxDir .. "/include",
         "include",
         "3rdparty",
         "3rdparty/tinyexr/deps/miniz"
@@ -71,7 +71,7 @@ lm:source_set "bimg-encode" {
         "bimg-iqa",
     },
     includes = {
-        lm.BxDir / "include",
+        lm.BxDir .. "/include",
         "include",
         "3rdparty",
         "3rdparty/nvtt",

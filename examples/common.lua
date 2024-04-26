@@ -3,8 +3,8 @@ local lm = require "luamake"
 lm:lib "example-common" {
     rootdir = lm.BgfxDir,
     includes = {
-        lm.BxDir / "include",
-        lm.BimgDir / "include",
+        lm.BxDir .. "/include",
+        lm.BimgDir .. "/include",
         "include",
         "3rdparty",
     },

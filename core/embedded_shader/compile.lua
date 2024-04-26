@@ -51,13 +51,13 @@ for _, name in ipairs(shader_file) do
         binfiles[#binfiles+1] = binfile
         lm:build {
             rule = "compile_shader_"..shader_type.."_"..v.type,
-            inputs = lm.BgfxDir / "src" / (name..".sc"),
+            inputs = lm.BgfxDir .. "/src" / (name..".sc"),
             outputs = binfile,
             deps = "shaderc",
         }
     end
 
-    local output = lm.BgfxDir / "src" / (name..".bin.h")
+    local output = lm.BgfxDir .. "/src" / (name..".bin.h")
     lm:runlua {
         script = "core/embedded_shader/embed.lua",
         args = { "$out", "$in" },
@@ -69,5 +69,5 @@ end
 
 lm:phony "embedded_shader" {
     inputs = inputs,
-    outputs = lm.BgfxDir / "src"/ "bgfx.cpp",
+    outputs = lm.BgfxDir .. "/src"/ "bgfx.cpp",
 }

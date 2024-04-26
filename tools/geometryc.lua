@@ -15,7 +15,7 @@ lm:exe "geometryc" {
         "bx",
     },
     includes = {
-        lm.BxDir / "include",
+        lm.BxDir .. "/include",
         "include",
         "3rdparty",
     },

@@ -7,19 +7,19 @@ lm:conf {
         defines = {
             "_CRT_SECURE_NO_WARNINGS",
         },
-        includes = lm.BxDir / "include/compat/msvc",
+        includes = lm.BxDir .. "/include/compat/msvc",
     },
     mingw = {
-        includes = lm.BxDir / "include/compat/mingw",
+        includes = lm.BxDir .. "/include/compat/mingw",
     },
     linux  = {
         flags = "-fPIC"
     },
     macos = {
-        includes = lm.BxDir / "include/compat/osx",
+        includes = lm.BxDir .. "/include/compat/osx",
     },
     ios = {
-        includes = lm.BxDir / "include/compat/ios",
+        includes = lm.BxDir .. "/include/compat/ios",
         flags = {
             "-fno-objc-arc",
             "-fembed-bitcode",

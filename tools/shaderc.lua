@@ -10,7 +10,7 @@ end
 require "utf8.support-utf8"
 
 lm:source_set "fcpp" {
-    rootdir = lm.BgfxDir / "3rdparty/fcpp",
+    rootdir = lm.BgfxDir .. "/3rdparty/fcpp",
     defines = {
         "NINCLUDE=64",
         "NWORK=65536",
@@ -29,7 +29,7 @@ lm:source_set "fcpp" {
 }
 
 lm:source_set "glslang" {
-    rootdir = lm.BgfxDir / "3rdparty/glslang",
+    rootdir = lm.BgfxDir .. "/3rdparty/glslang",
     defines = {
         "ENABLE_OPT=1",
         "ENABLE_HLSL=1",
@@ -71,7 +71,7 @@ lm:source_set "glslang" {
 }
 
 lm:source_set "glsl-optimizer" {
-    rootdir = lm.BgfxDir / "3rdparty/glsl-optimizer",
+    rootdir = lm.BgfxDir .. "/3rdparty/glsl-optimizer",
     includes = {
         "src",
         "include",
@@ -115,7 +115,7 @@ lm:source_set "glsl-optimizer" {
 }
 
 lm:source_set "spirv-opt" {
-    rootdir = lm.BgfxDir / "3rdparty/spirv-tools",
+    rootdir = lm.BgfxDir .. "/3rdparty/spirv-tools",
     includes = {
         ".",
         "include",
@@ -139,7 +139,7 @@ lm:source_set "spirv-opt" {
 }
 
 lm:source_set "spirv-cross" {
-    rootdir = lm.BgfxDir / "3rdparty/spirv-cross",
+    rootdir = lm.BgfxDir .. "/3rdparty/spirv-cross",
     defines = "SPIRV_CROSS_EXCEPTIONS_TO_ASSERTIONS",
     includes = "include",
     sources = {
@@ -167,9 +167,9 @@ lm:exe "shaderc" {
         "spirv-cross",
     },
     includes = {
-        lm.BxDir / "include",
-        lm.BimgDir / "include",
-        lm.BgfxDir / "include",
+        lm.BxDir .. "/include",
+        lm.BimgDir .. "/include",
+        lm.BgfxDir .. "/include",
         "3rdparty/webgpu/include",
         "3rdparty/dxsdk/include",
         "3rdparty/fcpp",

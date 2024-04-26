@@ -11,8 +11,8 @@ lm:exe "geometryv" {
         "bgfx-lib",
     },
     includes = {
-        lm.BxDir / "include",
-        lm.BimgDir / "include",
+        lm.BxDir .. "/include",
+        lm.BimgDir .. "/include",
         "include",
         "3rdparty",
         "examples/common",

@@ -28,8 +28,8 @@ local bgfxLib = {
         "BGFX_CONFIG_MAX_VIEWS=1024",
     },
     includes = {
-        lm.BxDir / "include",
-        lm.BimgDir / "include",
+        lm.BxDir .. "/include",
+        lm.BimgDir .. "/include",
         "3rdparty",
         "3rdparty/khronos",
         "include",
