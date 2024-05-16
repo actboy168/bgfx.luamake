@@ -11,3 +11,16 @@ Run example
 
 Or
 > luamake --run 00-helloworld
+
+Specify renderer
+> luamake --run 00 -vk
+
+
+| renderer   | args   |
+| ---------- | ------ |
+| noop       | -noop  |
+| direct3d11 | -d3d11 |
+| direct3d12 | -d3d12 |
+| vulken     | -vk    |
+| metal      | -mtl   |
+| opengl     | -gl    |
