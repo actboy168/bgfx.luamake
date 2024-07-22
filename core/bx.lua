@@ -19,6 +19,9 @@ lm:source_set "bx" {
             "-Wno-maybe-uninitialized",
         }
     },
+	msvc = {
+		flags = "/Zc:preprocessor",
+	},
     clang = {
         flags = "-ffast-math",
     },

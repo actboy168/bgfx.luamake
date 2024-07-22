@@ -40,6 +40,7 @@ local bgfxLib = {
     },
     msvc = {
         defines = "__STDC_FORMAT_MACROS",
+		flags = "/Zc:preprocessor",
     },
     windows = {
         includes = {
