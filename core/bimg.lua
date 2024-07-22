@@ -27,7 +27,10 @@ lm:source_set "bimg" {
         flags = {
             "-Wno-class-memaccess",
         }
-    }
+    },
+	msvc = {
+		flags = "/Zc:preprocessor",
+	},
 }
 
 lm:source_set "bimg-miniz" {
@@ -55,7 +58,10 @@ lm:source_set "bimg-decode" {
     },
     sources = {
         "src/image_decode.cpp",
-    }
+    },
+    msvc = {
+        flags = "/Zc:preprocessor",
+    },
 }
 
 lm:source_set "bimg-iqa" {
@@ -93,6 +99,7 @@ lm:source_set "bimg-encode" {
             "/wd4244",
             "/wd4819",
             "/wd5056",
+			"/Zc:preprocessor",
         }
     },
     gcc = {
