@@ -37,5 +37,11 @@ lm:exe "texturev" {
             "Cocoa",
             "IOKit",
         }
-    }
+    },
+    msvc = {
+        flags = {
+			"/wd4819",
+			"/Zc:preprocessor",
+		}
+    },
 }

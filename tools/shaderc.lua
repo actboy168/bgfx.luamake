@@ -192,6 +192,7 @@ lm:exe "shaderc" {
     msvc = {
         flags = {
             "/wd4819",
+			"/Zc:preprocessor",
         }
     }
 }

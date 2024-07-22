@@ -25,7 +25,10 @@ lm:exe "geometryc" {
         "3rdparty/meshoptimizer/src/*.cpp",
     },
     msvc = {
-        flags = "/wd4819",
+        flags = {
+			"/wd4819",
+			"/Zc:preprocessor",
+		}
     },
     windows = {
         deps = "bgfx-support-utf8",

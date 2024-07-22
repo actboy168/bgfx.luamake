@@ -29,6 +29,12 @@ lm:exe "geometryv" {
             "shell32",
         }
     },
+    msvc = {
+        flags = {
+			"/wd4819",
+			"/Zc:preprocessor",
+		}
+    },
     macos = {
         frameworks = {
             "Metal",

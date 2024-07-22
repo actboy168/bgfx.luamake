@@ -31,5 +31,11 @@ lm:exe "texturec" {
         links = {
             "psapi"
         }
-    }
+    },
+    msvc = {
+        flags = {
+			"/wd4819",
+			"/Zc:preprocessor",
+		}
+    },
 }
