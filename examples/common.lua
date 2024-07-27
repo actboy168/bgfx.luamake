@@ -16,7 +16,10 @@ lm:lib "example-common" {
     msvc = {
         defines = {
             "__STDC_FORMAT_MACROS",
-        }
+        },
+        flags = {
+            "/Zc:preprocessor",
+        },
     },
     macos = {
         sources = {
